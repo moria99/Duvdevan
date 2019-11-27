@@ -11,10 +11,14 @@ import { PriceDetailsComponent } from './components/order/price-details/price-de
 import { UserDetailsComponent } from './components/order/user-details/user-details.component';
 import { PaymentComponent } from './components/order/payment/payment.component';
 
+
 import { FormsModule } from '@angular/forms';
 
 import { UsersService } from '../app/services/users/users.service';
 
+
+
+import{HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,6 +35,7 @@ import { UsersService } from '../app/services/users/users.service';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule
   ],
   providers: [UsersService],
   bootstrap: [AppComponent]

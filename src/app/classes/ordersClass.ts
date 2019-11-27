@@ -17,7 +17,7 @@ class OrderDetails {
     public isRubberHose: boolean;
     public hoseLength: number
 
-    constructor( street: string, houseNumber: number, city: string, date: Date, time: Time, castingType:string, quantity: number, isConcrete: boolean, concreteType: concreteTypeEnum, isPump: boolean, pumpType: pumpTypeEnum, isRubberHose: boolean, hoseLength: number) {
+    constructor(street: string, houseNumber: number, city: string, date: Date, time: Time, castingType: string, quantity: number, isConcrete: boolean, concreteType: string, isPump: boolean, pumpType: string, isRubberHose: boolean, hoseLength: number) {
         this.userAdress;
         this.date = date;
         this.time = time;

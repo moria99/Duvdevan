@@ -11,6 +11,11 @@ import { PriceDetailsComponent } from './components/order/price-details/price-de
 import { UserDetailsComponent } from './components/order/user-details/user-details.component';
 import { PaymentComponent } from './components/order/payment/payment.component';
 
+import { FormsModule } from '@angular/forms';
+
+import { UsersService } from '../app/services/users/users.service';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,9 +29,10 @@ import { PaymentComponent } from './components/order/payment/payment.component';
     PaymentComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
   ],
-  providers: [],
+  providers: [UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

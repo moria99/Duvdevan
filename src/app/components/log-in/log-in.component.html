@@ -1,3 +1,64 @@
-<p>
-  log-in works!
-</p>
+<br>
+<br>
+
+<div style="text-align:center">
+  <h3><u>
+      Personal Details
+    </u></h3>
+
+  <label for="registeredUser"> Registered User: </label>
+  <input type="checkbox" name="registeredUser" [(ngModel)]="boxChecked">
+  <br><br>
+
+  <form #newUserForm="ngForm" (ngSubmit)="addNewUserToDb(newUserForm)">
+    <br>
+    <div id="newUserForm" *ngIf="!boxChecked">
+      <div>
+        <label for="userName">UserName *&nbsp;&nbsp;</label>
+        <input type="text" name="userName" [(ngModel)]="user.userName" #userName="ngModel">
+        &nbsp;&nbsp;
+        <label for="phone">Cell Phone&nbsp;&nbsp;</label>
+        <input type="text" name="phone" [(ngModel)]="user.phone" #phone="ngModel" required>
+      </div>
+      <p style="font-size: 13px">* If no username is entered, the cell phone number will be used as your username.
+      </p>
+      <div>
+        <label for="email">Email&nbsp;&nbsp;</label>
+        <input type="text" name="email" [(ngModel)]="user.email" #email="ngModel">
+        &nbsp;&nbsp;
+        <label for="companyNumber">Company Number&nbsp;&nbsp;</label>
+        <input type="text" name="companyNumber" [(ngModel)]="user.companyNumber" #companyNumber="ngModel">
+      </div>
+      <br>
+      <div>
+        <label for="password">Password&nbsp;&nbsp;</label>
+        <input type="text" name="password" [(ngModel)]="user.password" #password="ngModel" required>
+        &nbsp; &nbsp;
+        <label for="password2">Re-enter Password&nbsp;&nbsp;</label>
+        <input type="text" name="password2" [(ngModel)]="user.password2" #password2="ngModel" required>
+      </div>
+      <br>
+      <button type="submit" [disabled]="!busForm.form.valid">&nbsp;&nbsp;OK&nbsp;&nbsp;</button>
+      <br><br>
+    </div>
+
+
+    <div id="oldUserForm" *ngIf="boxChecked">
+      <div>
+        <br>
+        <label for="userName">UserName *&nbsp;&nbsp;</label>
+        <input type="text" name="userName" [(ngModel)]="user.userName" #userName="ngModel">
+        &nbsp;&nbsp;
+        <label for="password">Password&nbsp;&nbsp;</label>
+        <input type="text" name="password" [(ngModel)]="user.password" #password="ngModel" required>
+        &nbsp; &nbsp;
+        <br><br>
+        <button type="submit" [disabled]="!busForm.form.valid">&nbsp;&nbsp;OK&nbsp;&nbsp;</button>
+      </div>
+
+      <br>
+    </div>
+  </form>
+
+</div>
+

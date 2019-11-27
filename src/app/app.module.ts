@@ -11,6 +11,7 @@ import { PriceDetailsComponent } from './components/order/price-details/price-de
 import { UserDetailsComponent } from './components/order/user-details/user-details.component';
 import { PaymentComponent } from './components/order/payment/payment.component';
 
+import{HttpCleintModule} from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,8 @@ import { PaymentComponent } from './components/order/payment/payment.component';
     PaymentComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpCleintModule
   ],
   providers: [],
   bootstrap: [AppComponent]

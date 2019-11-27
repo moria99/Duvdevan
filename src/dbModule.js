@@ -17,5 +17,18 @@ let connectionPromise = mysql.createPool({ //create conected to the data base
   });
 
 module.exports = {
-  connectionPromise
+  connectionPromise,
+  getOptionOfCasting,
+  getOptionOfisConcrete
 };
+
+async function getOptionOfCasting(req, res) {
+  let c = db.query()
+  let Casting = await c;
+  return Casting;
+}
+async function getOptionOfisConcrete(req, res) {
+  let c = db.query('select [KodParit],[TeurParit] from [AtblPritimBeton]')
+  let isConcrete = await c;
+  return isConcrete;
+}

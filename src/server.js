@@ -17,3 +17,30 @@ app.use(function (req, res, next) {
 app.listen(port, () => {
   console.log("I listen to port " + port);
 });
+app.get('/getOptionOfCasting', async function (req, res) {
+  let CastingArray;
+  dbModule.connectionPromise
+    .then((c) => {
+      dbModule.getOptionOfCasting()
+        .then((b) => {
+          console.log(b);
+          CastingArray = b;
+          res.send(CastingArray)
+        })
+    })
+
+})
+app.get('/getOptionOfisConcrete', async function (req, res) {
+  let isConcrete;
+  dbModule.connectionPromise
+    .then((c) => {
+      dbModule.getOptionOfisConcrete()
+        .then((b) => {
+          console.log(b);
+          isConcrete = b;
+          res.send(isConcrete)
+        })
+    })
+
+})
+

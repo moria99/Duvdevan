@@ -10,16 +10,12 @@ import { OrderDetailsComponent } from './components/order/order-details/order-de
 import { PriceDetailsComponent } from './components/order/price-details/price-details.component';
 import { UserDetailsComponent } from './components/order/user-details/user-details.component';
 import { PaymentComponent } from './components/order/payment/payment.component';
-
+import { PriceDetailsService } from '../app/services/price/price-details.service';
+import { UsersService } from '../app/services/users/users.service';
 
 import { FormsModule } from '@angular/forms';
 
-import { UsersService } from '../app/services/users/users.service';
-
-
-
-import{HttpClientModule} from '@angular/common/http';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +33,7 @@ import{HttpClientModule} from '@angular/common/http';
     FormsModule,
     HttpClientModule
   ],
-  providers: [UsersService],
+  providers: [UsersService, PriceDetailsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

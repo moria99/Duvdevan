@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+// import { HttpClient } from '@angular/common/http';
 import { PriceList } from '../../classes/priceclass';
 import { TotalList } from '../../classes/totalclass';
+import { ApiService } from '../api/api.service';
 
 
 @Injectable({
@@ -9,14 +10,17 @@ import { TotalList } from '../../classes/totalclass';
 })
 export class PriceDetailsService {
 
-  constructor(private http: HttpClient) { }
-
+  constructor(public Api: ApiService) { }
 
 
   priceDetails() {
-    return this.http.get("http://localhost:3000/priceDetails");
+    this.Api.priceDetails().subscribe((d) => {
+      return d;
+    })
   }
   totalPrice() {
-    return this.http.get("http://localhost:3000/totalPrice");
+    this.Api.totalPrice().subscribe((d) => {
+      return d;
+    })
   }
 }

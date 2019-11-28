@@ -31,3 +31,55 @@ app.get('/getOrders', async function (req, res) {
 app.listen(port, () => {
   console.log("I listen to port " + port);
 });
+app.get('/getOptionOfCasting', async function (req, res) {
+  let CastingArray;
+  dbModule.connectionPromise
+    .then((c) => {
+      dbModule.getOptionOfCasting()
+        .then((b) => {
+          console.log(b);
+          CastingArray = b;
+          res.send(CastingArray)
+        })
+    })
+
+})
+app.get('/getOptionOfisConcrete', async function (req, res) {
+  let isConcrete;
+  dbModule.connectionPromise
+    .then((c) => {
+      dbModule.getOptionOfisConcrete()
+        .then((b) => {
+          console.log(b);
+          isConcrete = b;
+          res.send(isConcrete)
+        })
+    })
+
+})
+
+app.get('/priceDetails', function (req, res) {
+  console.log('hi');
+
+  let prices = [];
+  dbModule.connectionPromise.then(() => {
+    dbModule.getAllPrices().then((d) => {
+      console.log(d);
+      prices = d;
+      res.send(prices);
+    });
+  });
+});
+
+app.get('/totalPrice', function (req, res) {
+  console.log('hi');
+
+  let total;
+  dbModule.connectionPromise.then(() => {
+    dbModule.getTotal().then((d) => {
+      console.log(d);
+      total = d;
+      res.send(total);
+    });
+  });
+});

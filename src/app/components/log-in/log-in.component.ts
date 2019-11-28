@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { user } from "../../classes/userClass";
+import { UsersService } from "../../services/users/users.service";
 
 @Component({
   selector: 'app-log-in',
@@ -7,7 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogInComponent implements OnInit {
 
-  constructor() { }
+  boxChecked = false;
+
+  addNewUserToDb(newUserForm) {
+
+  };
+
+  constructor(private userService: UsersService) { }
 
   ngOnInit() {
   }

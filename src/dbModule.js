@@ -1,4 +1,4 @@
-const mysql = require('promise-mysql');
+const mysql = require('ms-sql');
 
 let db;
 
@@ -15,7 +15,12 @@ let connectionPromise = mysql.createPool({ //create conected to the data base
   .catch((e) => {
     console.error(e);
   });
-
+ async function getOrderFromDb(id){
+  let d = db.query("select * from orders where KodAvLakoach="+id);
+let orders= await d;
+return orders
+}
 module.exports = {
-  connectionPromise
+  connectionPromise,
+  getOrderFromDb
 };

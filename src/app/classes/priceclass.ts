@@ -14,8 +14,6 @@ class PriceList {
         this.Kamut = Kamut;
         this.SachHakol = SachHakol;
     }
-
-
 }
 export { PriceList }
 

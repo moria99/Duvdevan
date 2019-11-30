@@ -7,12 +7,15 @@ import { ApiService } from '../../services/api/api.service';
 })
 export class OrdersService {
 
-  // getOptionOfCasting() {
-  //   return this.http.get("http://localhost:3000/getOptionOfCasting")
-  // }
-
-
   constructor(private apiService: ApiService) { }
+
+  getOptionOfCasting() {
+    return this.apiService.getOptionOfCasting();
+  }
+  
+  getOptionOfisConcrete() {
+    return this.apiService.getOptionOfisConcrete();
+  }
 
   getFromData(x) {
     return this.apiService.getOrders(x)
@@ -21,13 +24,10 @@ export class OrdersService {
   saveOrder() {
 
   }
+
   getOrder() {
 
   }
 
-  // getOptionOfisConcrete() {
-  //   return this.http.get("http://localhost:3000/getOptionOfisConcrete")
-
-  // }
 }
 

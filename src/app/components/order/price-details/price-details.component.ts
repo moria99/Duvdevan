@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PriceList } from '../classes/priceclass';
-import { TotalList } from '../classes/totalclass';
-import { PriceDetailsService } from '../price-details.service';
+import { PriceList } from '../../../classes/priceclass';
+import { TotalList } from '../../../classes/totalclass';
+import { PriceDetailsService } from '../../../services/price/price-details.service';
 
 
 @Component({
@@ -14,7 +14,7 @@ export class PriceDetailsComponent implements OnInit {
   constructor(public PriceDetails: PriceDetailsService) { }
 
   total;
-  pricesArray = [];
+  pricesArray;
 
   ngOnInit() {
     this.PriceDetails.totalPrice().subscribe((d) => {
@@ -23,5 +23,9 @@ export class PriceDetailsComponent implements OnInit {
     this.PriceDetails.priceDetails().subscribe((d) => {
       this.pricesArray = d;
     });
+    
+      // this.activeRoute.paramMap.subscribe(map => {
+      //   map.get('id');
+      // })
   }
 }

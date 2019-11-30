@@ -12,15 +12,11 @@ export class PriceDetailsService {
 
   constructor(public Api: ApiService) { }
 
-
   priceDetails() {
-    this.Api.priceDetails().subscribe((d) => {
-      return d;
-    })
+    return this.Api.priceDetails();
   }
+
   totalPrice() {
-    this.Api.totalPrice().subscribe((d) => {
-      return d;
-    })
+    return this.Api.totalPrice();
   }
 }

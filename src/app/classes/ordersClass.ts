@@ -1,6 +1,7 @@
 import { Time } from "@angular/common";
 
 class OrderDetails {
+    //לתקן!
     public userAdress: {
         street: string,
         houseNumber: number,

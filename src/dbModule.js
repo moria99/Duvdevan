@@ -1,13 +1,16 @@
-const mysql = require('ms-sql');
+const mysql = require('promise-mysql');
+//const mssql = require('mssql');
 
 let db;
 
-let connectionPromise = mysql.createPool({ //create conected to the data base
+ let connectionPromise = mysql.createPool({
+//let connectionPromise = mssql.connect({ //create conected to the data base
     connectionLimit: 100,
     host: "localhost",
     user: "",
+    //server: "DESKTOP-2G2D206\\SQLEXPRESS",
     password: "",
-    database: ""
+    database: "DuvdevanDB"
   })
   .then((c) => { //it happend after the conection success
     db = c;
@@ -15,11 +18,8 @@ let connectionPromise = mysql.createPool({ //create conected to the data base
   .catch((e) => {
     console.error(e);
   });
-async function getOrderFromDb(id) {
-  let d = db.query("select * from orders where KodAvLakoach=" + id);
-  let orders = await d;
-  return orders
-}
+
+  
 module.exports = {
   connectionPromise,
   getOrderFromDb,
@@ -29,6 +29,11 @@ module.exports = {
   getTotal
 };
 
+async function getOrderFromDb(id) {
+  let d = db.query("select * from orders where KodAvLakoach=" + id);
+  let orders = await d;
+  return orders
+}
 async function getOptionOfCasting(req, res) {
   let c = db.query()
   let Casting = await c;

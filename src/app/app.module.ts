@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { routesConfiguration } from '../app/routs';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { OrderComponent } from './components/order/order.component';
@@ -14,8 +16,8 @@ import { PriceDetailsService } from '../app/services/price/price-details.service
 import { UsersService } from '../app/services/users/users.service';
 
 import { FormsModule } from '@angular/forms';
-
 import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(routesConfiguration),
   ],
   providers: [UsersService, PriceDetailsService],
   bootstrap: [AppComponent]

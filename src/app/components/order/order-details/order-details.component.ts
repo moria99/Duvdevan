@@ -13,6 +13,7 @@ export class OrderDetailsComponent implements OnInit {
 
   optionsOfCasting;
   OptionOfisConcrete
+  id=5;
 
   constructor(private ordersService: OrdersService) { }
 

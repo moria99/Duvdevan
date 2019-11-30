@@ -7,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderComponent implements OnInit {
 
+  isOrderDetails:boolean=true;
+  isPriceDetails:boolean=false;
+  isUserDetails:boolean=false;
+  isPayment:boolean=false;
+
   constructor() { }
 
   ngOnInit() {

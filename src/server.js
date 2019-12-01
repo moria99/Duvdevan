@@ -45,25 +45,20 @@ app.get('/getOptionOfisConcrete', async function (req, res) {
 })
 
 app.get('/priceDetails', function (req, res) {
-  console.log('hi');
-
   let prices = [];
   dbModule.connectionPromise.then(() => {
     dbModule.getAllPrices().then((d) => {
-      console.log(d);
       prices = d;
       res.send(prices);
     });
   });
 });
 
-app.get('/totalPrice', function (req, res) {
-  console.log('hi');
 
+app.get('/totalPrice', function (req, res) {
   let total;
   dbModule.connectionPromise.then(() => {
     dbModule.getTotal().then((d) => {
-      console.log(d);
       total = d;
       res.send(total);
     });

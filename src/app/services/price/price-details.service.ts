@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { PriceList } from '../../classes/priceclass';
 import { TotalList } from '../../classes/totalclass';
 import { ApiService } from '../api/api.service';
+// import { HttpClient } from '@angular/common/http';
+
 
 
 @Injectable({
@@ -14,13 +16,9 @@ export class PriceDetailsService {
 
 
   priceDetails() {
-    this.Api.priceDetails().subscribe((d) => {
-      return d;
-    })
+    return this.Api.priceDetails();
   }
   totalPrice() {
-    this.Api.totalPrice().subscribe((d) => {
-      return d;
-    })
+    return this.Api.totalPrice();
   }
 }

@@ -10,9 +10,12 @@ export class ApiService {
 
 
   priceDetails() {
-    return this.http.get("http://localhost:3000/priceDetails");
+     let b =this.http.get("http://localhost:3000/priceDetails");
+     return b
   }
+  
   totalPrice() {
-    return this.http.get("http://localhost:3000/totalPrice");
+     let a =this.http.get("http://localhost:3000/totalPrice");
+    return a
   }
 }

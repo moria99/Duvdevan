@@ -18,4 +18,5 @@ export class ApiService {
      let a =this.http.get("http://localhost:3000/totalPrice");
     return a
   }
+  
 }

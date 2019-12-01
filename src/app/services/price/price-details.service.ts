@@ -18,6 +18,7 @@ export class PriceDetailsService {
   priceDetails() {
     return this.Api.priceDetails();
   }
+  
   totalPrice() {
     return this.Api.totalPrice();
   }

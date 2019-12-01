@@ -61,6 +61,7 @@ app.get('/totalPrice', function (req, res) {
     dbModule.getTotal().then((d) => {
       total = d;
       res.send(total);
+      
     });
   });
 });

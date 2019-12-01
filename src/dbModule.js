@@ -45,4 +45,5 @@ async function getTotal(req, res) {
   let d = db.query('SELECT MisHeshbonit,sachLifney,Hanacha,sachAcharey,Maham,SachHakolKolel FROM tblHMehirShura WHERE  MisHeshbonit = 111');
   let data = await d;
   return data;
+  
 }

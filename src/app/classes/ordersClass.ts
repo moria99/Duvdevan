@@ -27,9 +27,6 @@ class OrderDetails {
         isConcrete: boolean, concreteType: string, isAdvanced: boolean,
         advancedType1: string, advancedType2: string, advancedType3: string, advancedType4: string, advancedType5: string,
         isPump: boolean, pumpType: string, isRubberHose: boolean, hoseLength: number) {
-        // this.userAdress.street = street;
-        // this.userAdress.houseNumber = houseNumber;
-        // this.userAdress.city = city;
         this.street = street;
         this.houseNumber = houseNumber;
         this.city = city;

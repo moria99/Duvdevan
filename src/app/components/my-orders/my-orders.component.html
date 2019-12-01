@@ -1,3 +1,27 @@
-<p>
-  my-orders works!
-</p>
+<div>
+  <h1>הסטוריית הזמנות</h1>
+  <table>
+    <tr>
+      <th>סטטוס</th>
+      <th>תאריך</th>
+      <th>שעה</th>
+      <th>כתובת</th>
+      <th>סוג משאבה</th>
+      <th>פריט בטון</th>
+      <th>פלוס</th>
+      <th> מ"ק</th>
+      <th> מ"א</th>
+      <th>סוג יציקה</th>
+    </tr>
+    <tr *ngFor="let o of orders">
+      <td>{{o.MisStatus}}</td>
+      <td>{{o.THovala}}</td>
+      <td>{{o.SHatchalatHovala}}</td>
+      <td>{{o.KodAvLakoach}}</td>
+      <td>{{o.SugSchora}}</td>
+      <td>{{o.KodParitBeton}}</td>
+      <td>{{o.plus}}</td>
+      <td>{{o.SugYetzika}}</td>//להוסיף שמות מהדאטה בייס
+    </tr>
+  </table>
+</div>

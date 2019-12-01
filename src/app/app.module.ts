@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { routesConfiguration } from '../app/routs';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { OrderComponent } from './components/order/order.component';
@@ -10,13 +12,11 @@ import { OrderDetailsComponent } from './components/order/order-details/order-de
 import { PriceDetailsComponent } from './components/order/price-details/price-details.component';
 import { UserDetailsComponent } from './components/order/user-details/user-details.component';
 import { PaymentComponent } from './components/order/payment/payment.component';
-
-
-import { FormsModule } from '@angular/forms';
-
+import { PriceDetailsService } from '../app/services/price/price-details.service';
 import { UsersService } from '../app/services/users/users.service';
 
-import{HttpClientModule} from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -33,9 +33,10 @@ import{HttpClientModule} from '@angular/common/http';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(routesConfiguration),
   ],
-  providers: [UsersService],
+  providers: [UsersService, PriceDetailsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -13,6 +13,20 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.get('/getOrders', async function (req, res) {
+  let orders = []
+  dbModule.connectionPromise.then(() => {
+    dbModule.getOrderFromDb(req.body)
+      .then((d) => {
+        orders = d;
+        res.send(orders);
+      })
+  })
+
+})
+
+
+
 
 app.listen(port, () => {
   console.log("I listen to port " + port);
@@ -39,3 +53,28 @@ app.post("/createUser", async function (req, res) {
   let userIsCreated = await dbModule.insertNewUser(req.body);
   res.send(userIsCreated);
 })
+app.get('/priceDetails', function (req, res) {
+  console.log('hi');
+
+  let prices = [];
+  dbModule.connectionPromise.then(() => {
+    dbModule.getAllPrices().then((d) => {
+      console.log(d);
+      prices = d;
+      res.send(prices);
+    });
+  });
+});
+
+app.get('/totalPrice', function (req, res) {
+  console.log('hi');
+
+  let total;
+  dbModule.connectionPromise.then(() => {
+    dbModule.getTotal().then((d) => {
+      console.log(d);
+      total = d;
+      res.send(total);
+    });
+  });
+});

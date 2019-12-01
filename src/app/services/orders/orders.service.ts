@@ -1,19 +1,33 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { ApiService } from '../../services/api/api.service';
+
 @Injectable({
   providedIn: 'root'
 
 })
 export class OrdersService {
-  constructor(private http: HttpClient) { }
+
+  constructor(private apiService: ApiService) { }
 
   getOptionOfCasting() {
-    return this.http.get("http://localhost:3000/getOptionOfCasting")
+    return this.apiService.getOptionOfCasting();
   }
-
+  
   getOptionOfisConcrete() {
-    return this.http.get("http://localhost:3000/getOptionOfisConcrete")
+    return this.apiService.getOptionOfisConcrete();
+  }
+
+  getFromData(x) {
+    return this.apiService.getOrders(x)
+  }
+
+  saveOrder() {
 
   }
+
+  getOrder() {
+
+  }
+
 }
 

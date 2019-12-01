@@ -11,7 +11,7 @@ export class LogInComponent implements OnInit {
 
   boxChecked = false;
 
-  password2
+  password2;
   newUser = new User("", "", "", "", "", "");
 
   userName;

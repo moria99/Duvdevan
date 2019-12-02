@@ -16,6 +16,12 @@ let connectionPromise = mysql.createPool({ //create conected to the data base
     console.error(e);
   });
 
+async function getOrdersFromDb(id) {
+  let d = ("select * from orders where KolAvLakoch="+id);
+  let orders = await d;
+  return orders;
+}
 module.exports = {
-  connectionPromise
+  connectionPromise,
+  getOrdersFromDb
 };

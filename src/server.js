@@ -13,7 +13,19 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.get('/getOrders'), async function (req, res) {
+  let orders = [];
+  dbModule.connectionPromise
+    .then(() => {
+      dbModule.getOrdersFromDb(req.body)
+        .then((d) => {
+          orders = d;
+          res.send(orders);
+        })
 
+    })
+
+}
 app.listen(port, () => {
   console.log("I listen to port " + port);
 });

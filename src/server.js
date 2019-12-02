@@ -40,14 +40,25 @@ app.post("/createUser", async function (req, res) {
   let userIsCreated = await dbModule.insertNewUser(req.body);
   res.send(userIsCreated);
 })
-app.get('/priceDetails',async function (req, res) {
+app.get('/priceDetails', function (req, res) {
   let prices = [];
-  prices = await dbModule.getAllPrices();
-  res.send(prices);
+  dbModule.connectionPromise.then(() => {
+    dbModule.getAllPrices().then((d) => {
+      prices = d;
+      res.send(prices);
+    });
+  });
 });
 
-app.get('/totalPrice',async function (req, res) {
+
+app.get('/totalPrice', function (req, res) {
   let total;
-  total = await dbModule.getTotal();
-  res.send(total);
+  dbModule.connectionPromise.then(() => {
+    dbModule.getTotal().then((d) => {
+      total = d;
+      res.send(total);
+      
+    });
+  });
+
 });

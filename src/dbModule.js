@@ -1,4 +1,4 @@
-// const mysql = require('promise-mysql');
+//const mysql = require('promise-mysql');
 const mssql = require('mssql');
 
 let db;
@@ -83,15 +83,16 @@ async function getOrderFromDb(id) {
 }
 
 async function getAllPrices(req, res) {
-  let d = db.query("select * from tblHMehir");
+  let d = db.query("select * from tblHMehirShura");
   let data = await d;
   return data;
 }
 
 async function getTotal(req, res) {
-  let d = db.query("select * from tblHMehirShura");
+  let d = db.query('SELECT MisHeshbonit,sachLifney,Hanacha,sachAcharey,Maham,SachHakolKolel FROM tblHMehir WHERE  MisHeshbonit = 111');
   let data = await d;
   return data;
+
 }
 async function insertNewUser(newUser) {
   console.log(newUser);

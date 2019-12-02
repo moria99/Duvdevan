@@ -3,7 +3,6 @@
 
 
 <body>
-  <h1> המחיר להזמנתך הוא </h1>
   <table align="right">
     <tr>
       <th>
@@ -34,37 +33,66 @@
 
   </table>
 
-  <table align="center">
-    <td class='input'>
-      <tr>
-        <h2>סה"כ ברוטו</h2>
-      </tr>
-      <tr>
-        <h2>{{total.AhuzHanacha}} % הנחה</h2>
-      </tr>
-      <tr>
-        <h2>סה"כ לפני מע"מ </h2>
-      </tr>
-      <tr>
-        <h2>{{total.AhuzMaham}} % מע"מ</h2>
-      </tr>
-      <tr>
-        <h2>סה"כ כולל מע"מ</h2>
-      </tr>
-    </td>
+  <table align="center" border="solid 2px">
+    <h1 align=center> המחיר להזמנתך הוא </h1>
 
-    <td>
-      <tr>{{total.SachLifney}}</tr>
-      <tr>{{total.Hanacha}}</tr>
-      <tr>{{total.SachAcharey}}</tr>
-      <tr>{{total.Maham}}</tr>
-      <tr>{{total.SachHakolKolel}}</tr>
-    </td>
+    <tr class='input'>
+
+      <td>
+        <h2> {{total.sachLifney}}</h2>
+      </td>
+      <td>
+        <h2>סה"כ ברוטו</h2>
+      </td>
+    </tr>
+
+    <tr>
+
+      <td>
+        <h2>{{total.Hanacha}}</h2>
+      </td>
+      <td>
+        <h2> הנחה</h2>
+      </td>
+      <td>
+        <h2>{{total.Hanacha}} % אחוז הנחה</h2>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <h2>{{total.sachAcharey}}</h2>
+      </td>
+      <td>
+        <h2>
+          סה"כ אחרי הנחה
+        </h2>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <h2>{{total.Maham}} % אחוז מע"מ</h2>
+      </td>
+
+      <td>
+        <h2>סה"כ לפני מע"מ </h2>
+      </td>
+    </tr>
+    <tr>
+
+      <td>
+        <h2>{{total.SachHakolKolel}}</h2>
+      </td>
+      <td>
+        <h2>סה"כ כולל מע"מ</h2>
+      </td>
+    </tr>
 
   </table>
   <button class="" onclick="">
     <h3>הבא </h3>
   </button>
+
   <button class="" onclick="">
     <h3>הקודם </h3>
   </button>

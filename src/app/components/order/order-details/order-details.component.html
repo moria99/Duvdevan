@@ -7,7 +7,7 @@
 
 
 
-    <input type="number" name="number" [(ngModel)]="order.userAdress.number" #number="ngModel" required>
+    <!-- <input type="number" name="number" [(ngModel)]="order.userAdress.number" #number="ngModel" required>
     <label for="city">מספר</label>
 
     <input type="text" name="street" [(ngModel)]="order.userAdress.street" #street="ngModel" required>
@@ -15,7 +15,7 @@
 
     <input type="text" name="city" [(ngModel)]="order.userAdress.city" #city="ngModel" required>
     <label for="city">עיר</label>
-    <br>
+    <br> -->
     <input type="time" name="time" [(ngModel)]="order.time" #time="ngModel" required>
     <label for="time">שעה</label>
 
@@ -24,7 +24,7 @@
     <input type="number" name="Quantity" [(ngModel)]="order.Quantity" #Quantity="ngModel" required>
     <label for="Quantity">כמות</label>
 
-    <select *ngFor="let p of optionsOfCasting">
+    <select id="d" *ngFor="let p of optionsOfCasting">
       <option>{{p}}</option>
     </select>
     <select *ngFor="let c of OptionOfisConcrete">
@@ -32,3 +32,5 @@
     </select>
     <!-- type="date" name="date" [(ngModel)]="order.date" #date="ngModel" required> -->
     <label for="date">תאריך</label>
+
+    <a routerLink="../{{id}}">go bace</a>

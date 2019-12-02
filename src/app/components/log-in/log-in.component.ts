@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { user } from "../../classes/userClass";
+import { User } from "../../classes/userClass";
 import { UsersService } from "../../services/users/users.service";
 
 @Component({
@@ -11,11 +11,42 @@ export class LogInComponent implements OnInit {
 
   boxChecked = false;
 
-  addNewUserToDb(newUserForm) {
+  password2;
+  newUser = new User("", "", "", "", "", "");
 
-  };
+  userName;
+  password;
 
-  constructor(private userService: UsersService) { }
+  addNewUserToDb() {
+
+    if (this.newUser.password === this.password2) {
+
+      if (this.newUser.userName == null) {
+        this.newUser.userName = this.newUser.phone;
+      }
+
+      if (this.newUser.companyNumber !== null) {
+        this.newUser.clientCode = this.newUser.companyNumber;
+      }
+      else {
+        if (this.newUser.userName !== null)
+          this.newUser.clientCode = this.newUser.userName;
+        else
+          this.newUser.clientCode = this.newUser.phone;
+      }
+
+      this.usersService.createUser(this.newUser);
+      console.log("after");
+    }
+    else { alert("Password fields do not match - please try again."); }
+
+  }
+
+  startValidation() {
+    this.usersService.validateUser(this.userName, this.password)
+  }
+
+  constructor(private usersService: UsersService) { }
 
   ngOnInit() {
   }

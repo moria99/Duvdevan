@@ -56,20 +56,23 @@ async function pushDetailsForm(f) {
 }
 
 async function getOrderFromDb(id) {
-  let d = db.query("select * from orders where KodAvLakoach=" + id);
+  let d = db.query("select * from dbo.AtblHovala where KodAvLakoach=" + id);
   let orders = await d;
   return orders
 }
 
-async function getAllPrices(req, res) {
+async function getAllPrices() {
   let d = db.query("select * from tblHMehirShura");
   let data = await d;
+  console.log(data);
   return data;
 }
 
-async function getTotal(req, res) {
-  let d = db.query('SELECT MisHeshbonit,sachLifney,Hanacha,sachAcharey,Maham,SachHakolKolel FROM tblHMehir WHERE  MisHeshbonit = 111');
+async function getTotal() {
+  let d = db.query('SELECT MisHeshbonit,sachLifney,Hanacha,sachAcharey,Maham,SachHakolKolel FROM tblHMehir');
+  // WHERE  MisHeshbonit = 111
   let data = await d;
+  console.log(data);
   return data;
 
 }

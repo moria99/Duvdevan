@@ -35,13 +35,11 @@ export class ApiService {
     return this.http.get("http://localhost:3000/totalPrice");
 
   }
-  
-    // getOptionOfisConcrete() {
+
+  // getOptionOfisConcrete() {
   //   return this.http.get("http://localhost:3000/getOptionOfisConcrete");
-  
+
   getOptionOfisConcrete() {
     return this.http.get("http://localhost:3000/getOptionOfisConcrete")
-
   }
-
 };

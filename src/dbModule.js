@@ -1,16 +1,16 @@
-const mysql = require('promise-mysql');
-//const mssql = require('mssql');
+//const mysql = require('promise-mysql');
+const mssql = require('mssql');
 
 let db;
 
-let connectionPromise = mysql.createPool({
-    //let connectionPromise = mssql.connect({ //create conected to the data base
-    connectionLimit: 100,
-    host: "localhost",
-    user: "",
-    //server: "DESKTOP-2G2D206\\SQLEXPRESS",
-    password: "",
-    database: "DuvdevanDB"
+//let connectionPromise = mysql.createPool({
+let connectionPromise = mssql.connect({ //create conected to the data base
+    //connectionLimit: 100,
+    //host: "localhost",
+    user: "zaq",
+    server: "localhost", //"LENOVO\\SQLEXPRESS",
+    password: "zaq21wsx!",
+    database: "Duvdevan"
   })
   .then((c) => { //it happend after the conection success
     db = c;

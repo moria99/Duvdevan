@@ -9,11 +9,11 @@ import { OrderDetails } from 'src/app/classes/ordersClass';
 })
 export class OrderDetailsComponent implements OnInit {
 
-  order: OrderDetails = new OrderDetails("", null, "", null, null, "", null, false, "", false, "", false, null);
+  order: OrderDetails = new OrderDetails("", null, "", null, null, "", null, null, "", false, "", "", "", "", "", false, "", false, null);
 
   optionsOfCasting;
   OptionOfisConcrete
-  id=5;
+  id = 5;
 
   constructor(private ordersService: OrdersService) { }
 

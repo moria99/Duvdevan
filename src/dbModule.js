@@ -82,10 +82,10 @@ async function getAllPrices(req, res) {
 }
 
 async function getTotal(req, res) {
-  let d = db.query('SELECT MisHeshbonit,sachLifney,Hanacha,sachAcharey,Maham,SachHakolKolel FROM tblHMehirShura WHERE  MisHeshbonit = 111');
+  let d = db.query('SELECT MisHeshbonit,sachLifney,Hanacha,sachAcharey,Maham,SachHakolKolel FROM tblHMehir WHERE  MisHeshbonit = 111');
   let data = await d;
   return data;
-  
+
 }
 async function insertNewUser(newUser) {
   console.log(newUser);

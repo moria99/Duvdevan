@@ -13,39 +13,26 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.get('/getOrders', async function (req, res) {
-  let orders = []
-  dbModule.connectionPromise.then(() => {
-    dbModule.getOrderFromDb(req.body)
-      .then((d) => {
-        orders = d;
-        res.send(orders);
-      })
-  })
-
-})
-
-
-
-
 app.listen(port, () => {
   console.log("I listen to port " + port);
 });
+
+
+//the functions
+app.get('/getOrders', async function (req, res) {
+  let orders = []
+  orders = await dbModule.getOrderFromDb(req.body);
+  res.send(orders);
+})
+
 app.get('/getOptionOfCasting', async function (req, res) {
   let CastingArray;
-  dbModule.connectionPromise
-    .then((c) => {
-      dbModule.getOptionOfCasting()
-        .then((b) => {
-          console.log(b);
-          CastingArray = b;
-          res.send(CastingArray)
-        })
-    })
+  CastingArray =  await dbModule.getCastingType();
+  res.send(CastingArray);
 })
 
 app.get('/getOptionOfisConcrete', async function (req, res) {
-  let isConcrete = await dbModule.getOptionOfisConcrete();
+  let isConcrete = await dbModule.getConcreteType();
   res.send(isConcrete);
 })
 
@@ -53,29 +40,14 @@ app.post("/createUser", async function (req, res) {
   let userIsCreated = await dbModule.insertNewUser(req.body);
   res.send(userIsCreated);
 })
-
-app.get('/priceDetails', function (req, res) {
-  console.log('hi');
-
+app.get('/priceDetails',async function (req, res) {
   let prices = [];
-  dbModule.connectionPromise.then(() => {
-    dbModule.getAllPrices().then((d) => {
-      console.log(d);
-      prices = d;
-      res.send(prices);
-    });
-  });
+  prices = await dbModule.getAllPrices();
+  res.send(prices);
 });
 
-app.get('/totalPrice', function (req, res) {
-  console.log('hi');
-
+app.get('/totalPrice',async function (req, res) {
   let total;
-  dbModule.connectionPromise.then(() => {
-    dbModule.getTotal().then((d) => {
-      console.log(d);
-      total = d;
-      res.send(total);
-    });
-  });
+  total = await dbModule.getTotal();
+  res.send(total);
 });

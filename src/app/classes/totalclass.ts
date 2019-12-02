@@ -18,6 +18,6 @@ class TotalList {
         this.AhuzMaham = AhuzMaham;
 
     }
-
 }
+
 export { TotalList }

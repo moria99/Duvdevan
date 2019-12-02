@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-// import { PriceList } from '../../classes/priceclass';
-// import { TotalList } from '../classes/totalclass';
-import { PriceDetailsService } from '../../../services/price/price-details.service'
 import { PriceList } from '../../../classes/priceclass';
 import { TotalList } from '../../../classes/totalclass';
+import { PriceDetailsService } from '../../../services/price/price-details.service';
 
 
 @Component({
@@ -29,7 +27,6 @@ export class PriceDetailsComponent implements OnInit {
       // console.log(this.total); 
 
     });
-
     
       // this.activeRoute.paramMap.subscribe(map => {
       //   map.get('id');

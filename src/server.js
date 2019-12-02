@@ -13,39 +13,26 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.get('/getOrders', async function (req, res) {
-  let orders = []
-  dbModule.connectionPromise.then(() => {
-    dbModule.getOrderFromDb(req.body)
-      .then((d) => {
-        orders = d;
-        res.send(orders);
-      })
-  })
-
-})
-
-
-
-
 app.listen(port, () => {
   console.log("I listen to port " + port);
 });
+
+
+//the functions
+app.get('/getOrders', async function (req, res) {
+  let orders = []
+  orders = await dbModule.getOrderFromDb(req.body);
+  res.send(orders);
+})
+
 app.get('/getOptionOfCasting', async function (req, res) {
   let CastingArray;
-  dbModule.connectionPromise
-    .then((c) => {
-      dbModule.getOptionOfCasting()
-        .then((b) => {
-          console.log(b);
-          CastingArray = b;
-          res.send(CastingArray)
-        })
-    })
+  CastingArray =  await dbModule.getCastingType();
+  res.send(CastingArray);
 })
 
 app.get('/getOptionOfisConcrete', async function (req, res) {
-  let isConcrete = await dbModule.getOptionOfisConcrete();
+  let isConcrete = await dbModule.getConcreteType();
   res.send(isConcrete);
 })
 
@@ -73,4 +60,5 @@ app.get('/totalPrice', function (req, res) {
       
     });
   });
+
 });

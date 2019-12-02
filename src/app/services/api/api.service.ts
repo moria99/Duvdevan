@@ -31,11 +31,17 @@ export class ApiService {
   }
 
   totalPrice() {
-    let a = this.http.get("http://localhost:3000/totalPrice");
-    return a
+
+    return this.http.get("http://localhost:3000/totalPrice");
+
   }
+  
+    // getOptionOfisConcrete() {
+  //   return this.http.get("http://localhost:3000/getOptionOfisConcrete");
+  
   getOptionOfisConcrete() {
-    return this.http.get("http://localhost:3000/getOptionOfisConcrete");
+    return this.http.get("http://localhost:3000/getOptionOfisConcrete")
+
   }
 
 };

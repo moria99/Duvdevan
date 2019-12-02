@@ -10,50 +10,52 @@
   <input type="checkbox" name="registeredUser" [(ngModel)]="boxChecked">
   <br><br>
 
-  <form #newUserForm="ngForm" (ngSubmit)="addNewUserToDb(newUserForm)">
+  <form #newUserForm="ngForm">
     <br>
-    <div id="newUserForm" *ngIf="!boxChecked">
+    <div id="divNewUserForm" *ngIf="!boxChecked">
       <div>
         <label for="userName">UserName *&nbsp;&nbsp;</label>
-        <input type="text" name="userName" [(ngModel)]="user.userName" #userName="ngModel">
+        <input type="text" name="userName" [(ngModel)]="newUser.userName" #userName="ngModel">
         &nbsp;&nbsp;
         <label for="phone">Cell Phone&nbsp;&nbsp;</label>
-        <input type="text" name="phone" [(ngModel)]="user.phone" #phone="ngModel" required>
+        <input type="text" name="phone" [(ngModel)]="newUser.phone" #phone="ngModel" required>
       </div>
       <p style="font-size: 13px">* If no username is entered, the cell phone number will be used as your username.
       </p>
       <div>
         <label for="email">Email&nbsp;&nbsp;</label>
-        <input type="text" name="email" [(ngModel)]="user.email" #email="ngModel">
+        <input type="text" name="email" [(ngModel)]="newUser.email" #email="ngModel">
         &nbsp;&nbsp;
         <label for="companyNumber">Company Number&nbsp;&nbsp;</label>
-        <input type="text" name="companyNumber" [(ngModel)]="user.companyNumber" #companyNumber="ngModel">
+        <input type="text" name="companyNumber" [(ngModel)]="newUser.companyNumber" #companyNumber="ngModel">
       </div>
       <br>
       <div>
         <label for="password">Password&nbsp;&nbsp;</label>
-        <input type="text" name="password" [(ngModel)]="user.password" #password="ngModel" required>
+        <input type="text" name="password" [(ngModel)]="newUser.password" #password="ngModel" required>
         &nbsp; &nbsp;
         <label for="password2">Re-enter Password&nbsp;&nbsp;</label>
-        <input type="text" name="password2" [(ngModel)]="user.password2" #password2="ngModel" required>
+        <input type="text" name="password2" [(ngModel)]="password2" #ngPassword2="ngModel" required>
       </div>
       <br>
-      <button type="submit" [disabled]="!busForm.form.valid">&nbsp;&nbsp;OK&nbsp;&nbsp;</button>
+      <button type="submit" [disabled]="!newUserForm.form.valid"
+        (click)="addNewUserToDb()">&nbsp;&nbsp;OK&nbsp;&nbsp;</button>
       <br><br>
     </div>
 
 
-    <div id="oldUserForm" *ngIf="boxChecked">
+    <div id="divOldUserForm" *ngIf="boxChecked">
       <div>
         <br>
         <label for="userName">UserName *&nbsp;&nbsp;</label>
-        <input type="text" name="userName" [(ngModel)]="user.userName" #userName="ngModel">
+        <input type="text" name="userName" [(ngModel)]="userName" #ngUserName="ngModel">
         &nbsp;&nbsp;
         <label for="password">Password&nbsp;&nbsp;</label>
-        <input type="text" name="password" [(ngModel)]="user.password" #password="ngModel" required>
+        <input type="text" name="password" [(ngModel)]="password" #ngPassword="ngModel" required>
         &nbsp; &nbsp;
         <br><br>
-        <button type="submit" [disabled]="!busForm.form.valid">&nbsp;&nbsp;OK&nbsp;&nbsp;</button>
+        <button type="submit" [disabled]="!newUserForm.form.valid"
+          (click)="startValidation()">&nbsp;&nbsp;OK&nbsp;&nbsp;</button>
       </div>
 
       <br>
@@ -61,4 +63,3 @@
   </form>
 
 </div>
-

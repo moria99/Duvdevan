@@ -17,11 +17,15 @@ export class PriceDetailsComponent implements OnInit {
   pricesArray;
 
   ngOnInit() {
-    this.PriceDetails.totalPrice().subscribe((d) => {
-      this.total = d;
-    });
+
     this.PriceDetails.priceDetails().subscribe((d) => {
-      this.pricesArray = d;
+       this.pricesArray = d;
+    });
+
+    this.PriceDetails.totalPrice().subscribe((d) => {
+      this.total =d[0];
+      // console.log(this.total); 
+
     });
     
       // this.activeRoute.paramMap.subscribe(map => {

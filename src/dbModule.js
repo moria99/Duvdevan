@@ -12,7 +12,7 @@ let connectionPromise = mssql.connect({ //create conected to the data base
     password: "zaq21wsx!",
     database: "Duvdevan"
   })
-  .then((c) => { //it happend after the conection success
+  .then((c) => { //it happened after the conection success
     db = c;
   })
   .catch((e) => {
@@ -22,6 +22,7 @@ let connectionPromise = mssql.connect({ //create conected to the data base
 
 module.exports = {
   connectionPromise,
+  insertNewUser,
   getOrderFromDb,
   getAllPrices,
   getCastingType,
@@ -75,13 +76,21 @@ async function getOrderFromDb(id) {
 }
 
 async function getAllPrices(req, res) {
-  let d = db.query("select * from tblHMehir");
+  let d = db.query("select * from tblHMehirShura");
   let data = await d;
   return data;
 }
 
 async function getTotal(req, res) {
-  let d = db.query("select * from tblHMehirShura");
+  let d = db.query('SELECT MisHeshbonit,sachLifney,Hanacha,sachAcharey,Maham,SachHakolKolel FROM tblHMehirShura WHERE  MisHeshbonit = 111');
   let data = await d;
   return data;
+  
+}
+async function insertNewUser(newUser) {
+  console.log(newUser);
+  let c = db.query('insert into tblusers values ("' + newUser.userName + '", "' + newUser.password + '" , "' + newUser.companyNumber + '" , "' + newUser.phone + '" , "' + newUser.email + '" , "' + newUser.clientCode + '")');
+  let isRegistered = await c;
+  console.log(isRegistered);
+  return isRegistered;
 }

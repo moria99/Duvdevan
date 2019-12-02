@@ -1,20 +1,21 @@
-const mysql = require('promise-mysql');
-//const mssql = require('mssql');
+// const mysql = require('promise-mysql');
+const mssql = require('mssql');
 
 let db;
 
-let connectionPromise = mysql.createPool({
-    //let connectionPromise = mssql.connect({ //create conected to the data base
-    connectionLimit: 100,
-    host: "localhost",
+// let connectionPromise = mysql.createPool({
+let connectionPromise = mssql.connect({ //create conected to the data base
+    // connectionLimit: 100,
+    // host: "localhost",
     // password: "beitar",
     // database: "nisayon"
-    user: "root",
+    user: "chaya",
     // ""
-    //server: "DESKTOP-2G2D206\\SQLEXPRESS",
-    password: "beitar",
+    server: "DESKTOP-J1L2C19\\SQLEXPRESS",
+    password: "chaya",
     // ""
-    database: "duvdevan"
+    database: "Duvdevan"
+
     // "DuvdevanDB"
   })
   .then((c) => { //it happened after the conection success
@@ -89,7 +90,7 @@ async function getTotal(req, res) {
   let d = db.query('SELECT MisHeshbonit,sachLifney,Hanacha,sachAcharey,Maham,SachHakolKolel FROM tblHMehirShura WHERE  MisHeshbonit = 111');
   let data = await d;
   return data;
-  
+
 }
 async function insertNewUser(newUser) {
   console.log(newUser);

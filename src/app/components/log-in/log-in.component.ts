@@ -18,7 +18,7 @@ export class LogInComponent implements OnInit {
   password;
 
   addNewUserToDb() {
-
+    // console.log("shalom");
     if (this.newUser.password === this.password2) {
 
       if (this.newUser.userName == null) {
@@ -36,6 +36,7 @@ export class LogInComponent implements OnInit {
       }
 
       this.usersService.createUser(this.newUser);
+      console.log("after");
     }
     else { alert("Password fields do not match - please try again."); }
 

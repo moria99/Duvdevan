@@ -10,8 +10,10 @@ export class UsersService {
   constructor(private apiService: ApiService) { }
 
   createUser(newUser) {
-    let result = this.apiService.createUser(newUser);
-    return result;
+    this.apiService.createUser(newUser).subscribe((r) => {
+      let result = r;
+      return result;
+    });
   }
 
   validateUser(userName, password) {

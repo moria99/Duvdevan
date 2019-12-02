@@ -1,17 +1,23 @@
-const mysql = require('promise-mysql');
-//const mssql = require('mssql');
+//const mysql = require('promise-mysql');
+const mssql = require('mssql');
 
 let db;
 
-let connectionPromise = mysql.createPool({
-//let connectionPromise = mssql.connect({ //create conected to the data base
-    //connectionLimit: 100,
-    //host: "localhost",
-    user: "",
-    password: "",
+// let connectionPromise = mysql.createPool({
+let connectionPromise = mssql.connect({ //create conected to the data base
+    // connectionLimit: 100,
+    // host: "localhost",
+    user: "duvdevangroup3",
+    // "root",
+    // ""
+    // server: "DESKTOP-2G2D206\\SQLEXPRESS",
     server: "localhost",
-    // DESKTOP-2G2D206\SQLEXPRESS
-    database: "DuvdevanDB"
+    password: "dakat37@gmail.com",
+    // "beitar",
+    // ""
+    database: "Duvdevan"
+    // "duvdevan"
+    // "DuvdevanDB"
   })
   .then((c) => { //it happened after the conection success
     db = c;
@@ -77,18 +83,26 @@ async function getOrderFromDb(id) {
 }
 
 async function getAllPrices(req, res) {
-  let d = db.query("select * from tblHMehir");
+  let d = db.query("select * from tblHMehirShura");
   let data = await d;
   return data;
 }
 
 async function getTotal(req, res) {
-  let d = db.query("select * from tblHMehirShura");
+  let d = db.query('SELECT MisHeshbonit,sachLifney,Hanacha,sachAcharey,Maham,SachHakolKolel FROM tblHMehir WHERE  MisHeshbonit = 111');
   let data = await d;
   return data;
+
 }
 async function insertNewUser(newUser) {
-  let c = db.query('insert into tblUsers values (' + newUser.UserName + ',' + newUser.PassName + ',' + newUser.HetPey + ',' + newUser.Selolar + ',' + newUser.EMail + ',' + newUser.KodLakoach+')');
+  console.log(newUser);
+
+  // let c = db.query('insert into dbo.tblUsers (UserName ,PassName, HetPey, Selolar, EMail, KodLakoach) values ("' + newUser.userName + '", "' + newUser.password + '" , "' + newUser.companyNumber + '" , "' + newUser.phone + '" , "' + newUser.email + '" , "' + newUser.clientCode + '")');
+
+  let c = db.query("insert into dbo.tblUsers values ('" + newUser.userName + "', '" + newUser.password + "' , '" + newUser.companyNumber + "' , '" + newUser.phone + "' , '" + newUser.email + "' , '" + newUser.clientCode + "')");
+
+
   let isRegistered = await c;
+  console.log(isRegistered);
   return isRegistered;
 }

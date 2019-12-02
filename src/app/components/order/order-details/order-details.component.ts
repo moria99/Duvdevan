@@ -13,7 +13,7 @@ export class OrderDetailsComponent implements OnInit {
 
   optionsOfCasting;
   OptionOfisConcrete
-  id=5;
+  id = 5;
 
   constructor(private ordersService: OrdersService) { }
 
@@ -22,10 +22,10 @@ export class OrderDetailsComponent implements OnInit {
       this.optionsOfCasting = d
       console.log(this.optionsOfCasting)
     })
-    this.ordersService.getOptionOfisConcrete().subscribe((d) => {
-      this.OptionOfisConcrete = d
-      console.log(this.OptionOfisConcrete)
-    })
+    // this.ordersService.getOptionOfisConcrete().subscribe((d) => {
+    //   this.OptionOfisConcrete = d
+    //   console.log(this.OptionOfisConcrete)
+    // })
 
   }
 

@@ -36,6 +36,7 @@ export class LogInComponent implements OnInit {
       }
 
       this.usersService.createUser(this.newUser);
+      console.log("after");
     }
     else { alert("Password fields do not match - please try again."); }
 

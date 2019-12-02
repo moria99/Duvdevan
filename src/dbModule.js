@@ -4,12 +4,13 @@ const mysql = require('promise-mysql');
 let db;
 
 let connectionPromise = mysql.createPool({
-    //let connectionPromise = mssql.connect({ //create conected to the data base
-    connectionLimit: 100,
-    host: "localhost",
+//let connectionPromise = mssql.connect({ //create conected to the data base
+    //connectionLimit: 100,
+    //host: "localhost",
     user: "",
-    //server: "DESKTOP-2G2D206\\SQLEXPRESS",
     password: "",
+    server: "localhost",
+    // DESKTOP-2G2D206\SQLEXPRESS
     database: "DuvdevanDB"
   })
   .then((c) => { //it happened after the conection success

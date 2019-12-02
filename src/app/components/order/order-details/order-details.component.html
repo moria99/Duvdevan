@@ -2,35 +2,81 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <div class="container">
-  <h1>פרטי הזמנה</h1>
-  <form #orderDetilsForm="ngForm" (ngSubmit)="saveFrom(orderDetilsForm)">
+  <h1>
+    פרטי הזמנה
+  </h1>
+  <form #orderDetailsForm="ngForm" (ngSubmit)="SaveDetailsForm(orderDetailsForm)">
+    <div id="UserAdress">
+      <input type="number" name="houseNumber" required [(ngModel)]="details.houseNumber" #number="ngModel">
+      <label for="houseNumber">&nbsp;מספר</label>
+      <input type="text" name="street" required [(ngModel)]="details.street" #street="ngModel">
+      <label for="street">&nbsp;רחוב</label>
+      <input type="text" name="city" required [(ngModel)]="details.city" #city="ngModel">
+      <label for="city">&nbsp;עיר</label>
+    </div>
+    <br>
+    <div>
+      <input type="date" name="date" [(ngModel)]="details.date" #date="ngModel" required>
+      <label for="date">&nbsp;בחר תאריך</label>
+      <input type="time" name="time" [(ngModel)]="details.time" #time="ngModel" required>
+      <label for="time">&nbsp;שעה</label>
+    </div>
+    <br>
+    <div>
+      <select>
+        <option *ngFor="let sugYetzika of optionsOfCastingType">{{sugYetzika.TeurParit}}</option>
+      </select>
+      <label for="castingType">&nbsp;סוגי יציקה</label>
+    </div>
+    <div>
+      <input type="checkbox" name="isPlus" value="true" [(ngModel)]="details.isPlus" #isConcrete="ngModel">
+      <label for="isPlus">האם הכמות יכולה לגדול</label>
+      <input type="number" name="quantity" [(ngModel)]="details.quantity" #quantity="ngModel" required>
+      <label for="quantity">&nbsp;כמות</label>
+    </div>
+    <input type="checkbox" name="isConcrete" value="true" [(ngModel)]="details.isConcrete" #isConcrete="ngModel">
+    <label for="isConcrete">מעוניין להזמין בטון</label>
+    <div *ngIf="details.isConcrete">
+      <select>
+        <option *ngFor="let pritimBeton of optionsOfConcreteType">{{pritimBeton.TeurParit}}</option>
+      </select>
+      <input type="checkbox" name="isAdvanced" value="true" [(ngModel)]="details.isAdvanced" #isAdvanced="ngModel">
+      <label for="isAdvanced">מתקדם</label><br>
+      <div *ngIf="details.isAdvanced">
+        <select [(ngModel)]="details.advancedType1">
+          <option *ngFor="let pritimBeton of optionsOfConcreteType">{{pritimBeton.SugBeton}}</option>
+        </select>
+        <select [(ngModel)]="details.advancedType2">
+          <option *ngFor="let pritimBeton of optionsOfConcreteType">{{pritimBeton.Chozek}}</option>
+        </select>
+        <select [(ngModel)]="details.advancedType3">
+          <option *ngFor="let pritimBeton of optionsOfConcreteType">{{pritimBeton.TzorechBeton}}</option>
+        </select>
+        <select [(ngModel)]="details.advancedType4">
+          <option *ngFor="let pritimBeton of optionsOfConcreteType">{{pritimBeton.DargatChasifa}}</option>
+        </select>
+        <select [(ngModel)]="details.advancedType5">
+          <option *ngFor="let pritimBeton of optionsOfConcreteType">{{pritimBeton.SomechBeton}}</option>
+        </select>
+      </div><br>
+    </div>
+    <div>
+      <input type="checkbox" name="isPump" value="true" [(ngModel)]="details.isPump" #isPump="ngModel">
+      <label for="isPump">&nbsp;מעוניין להזמין משאבה</label><br>
+      <div *ngIf="details.isPump">
+        <select>
+          <option *ngFor="let pritimMasheva of optionsOfPumpType">{{pritimMasheva.TeurParit}}</option>
+        </select>
+        <input type="checkbox" name="isRubberHose" value="true" [(ngModel)]="details.isRubberHose"
+          #isRubberHose="ngModel">
+        <label for="isRubberHose">&nbsp;תוספת צינור גומי</label><br>
+        <input *ngIf="details.isRubberHose" type="number" name="hoseLength" [(ngModel)]="details.hoseLength"
+          #hoseLength="ngModel" required>
+        <label for="hoseLength">&nbsp;אורך הצינור</label><br>
+      </div>
+    </div>
+    <button type="submit" [disabled]="orderDetailsForm.form.invalid"><a routerLink="../{{id}}">הבא</a></button>
+  </form>
+</div>
 
-
-
-    <!-- <input type="number" name="number" [(ngModel)]="order.userAdress.number" #number="ngModel" required>
-    <label for="city">מספר</label>
-
-    <input type="text" name="street" [(ngModel)]="order.userAdress.street" #street="ngModel" required>
-    <label for="street">רחוב</label>
-
-    <input type="text" name="city" [(ngModel)]="order.userAdress.city" #city="ngModel" required>
-    <label for="city">עיר</label>
-    <br> -->
-    <input type="time" name="time" [(ngModel)]="order.time" #time="ngModel" required>
-    <label for="time">שעה</label>
-
-    <input type="date" name="date" [(ngModel)]="order.date" #date="ngModel" required>
-    <label for="date">תאריך</label>
-    <input type="number" name="Quantity" [(ngModel)]="order.Quantity" #Quantity="ngModel" required>
-    <label for="Quantity">כמות</label>
-
-    <select id="d" *ngFor="let p of optionsOfCasting">
-      <option>{{p}}</option>
-    </select>
-    <select *ngFor="let c of OptionOfisConcrete">
-      <option>{{c}}</option>
-    </select>
-    <!-- type="date" name="date" [(ngModel)]="order.date" #date="ngModel" required> -->
-    <label for="date">תאריך</label>
-
-    <a routerLink="../{{id}}">go bace</a>
+    

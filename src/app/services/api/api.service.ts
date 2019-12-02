@@ -16,13 +16,8 @@ export class ApiService {
 
   }
 
-
   getOrders(x) {
     return this.http.get('http://locallhot:3000/getOrders', x);
-  }
-
-  getOptionOfCasting() {
-    return this.http.get("http://localhost:3000/getOptionOfCasting")
   }
 
   priceDetails() {
@@ -31,15 +26,22 @@ export class ApiService {
   }
 
   totalPrice() {
-
     return this.http.get("http://localhost:3000/totalPrice");
-
   }
 
-  // getOptionOfisConcrete() {
-  //   return this.http.get("http://localhost:3000/getOptionOfisConcrete");
+  getCastingType() {
+    return this.http.get("http://localhost:3000/getCastingType");
+  }
 
-  getOptionOfisConcrete() {
-    return this.http.get("http://localhost:3000/getOptionOfisConcrete")
+  getConcreteType() {
+    return this.http.get("http://localhost:3000/getConcreteType");
+  }
+  
+  getPumpType() {
+    return this.http.get("http://localhost:3000/getPumpType");
+  }
+
+  pushDetailsForm(newForm) {
+    return this.http.post("http://localhost:3000/pushDetailsForm", newForm);
   }
 };

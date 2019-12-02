@@ -53,6 +53,7 @@ app.post("/createUser", async function (req, res) {
   let userIsCreated = await dbModule.insertNewUser(req.body);
   res.send(userIsCreated);
 })
+
 app.get('/priceDetails', function (req, res) {
   console.log('hi');
 

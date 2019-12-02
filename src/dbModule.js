@@ -7,10 +7,13 @@ let connectionPromise = mysql.createPool({
     //let connectionPromise = mssql.connect({ //create conected to the data base
     connectionLimit: 100,
     host: "localhost",
-    user: "",
+    user: "root",
+    // ""
     //server: "DESKTOP-2G2D206\\SQLEXPRESS",
-    password: "",
-    database: "DuvdevanDB"
+    password: "beitar",
+    // ""
+    database: "duvdevan"
+    // "DuvdevanDB"
   })
   .then((c) => { //it happened after the conection success
     db = c;
@@ -87,7 +90,9 @@ async function getTotal(req, res) {
   return data;
 }
 async function insertNewUser(newUser) {
-  let c = db.query('insert into tblUsers values (' + newUser.UserName + ',' + newUser.PassName + ',' + newUser.HetPey + ',' + newUser.Selolar + ',' + newUser.EMail + ',' + newUser.KodLakoach+')');
+  console.log(newUser);
+  let c = db.query('insert into tblusers values ("' + newUser.userName + '", "' + newUser.password + '" , "' + newUser.companyNumber + '" , "' + newUser.phone + '" , "' + newUser.email + '" , "' + newUser.clientCode + '")');
   let isRegistered = await c;
+  console.log(isRegistered);
   return isRegistered;
 }

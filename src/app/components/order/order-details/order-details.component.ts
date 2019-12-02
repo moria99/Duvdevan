@@ -9,11 +9,11 @@ import { OrderDetails } from 'src/app/classes/ordersClass';
 })
 export class OrderDetailsComponent implements OnInit {
 
-  order: OrderDetails = new OrderDetails("", null, "", null, null, "", null, false, "", false, "", false, null);
+  order: OrderDetails = new OrderDetails("", null, "", null, null, "", null, false, "", false, "", "", "", "", "", false, "", false, null);
 
   optionsOfCasting;
   OptionOfisConcrete
-  id=5;
+  id = 5;
 
   constructor(private ordersService: OrdersService) { }
 
@@ -22,10 +22,10 @@ export class OrderDetailsComponent implements OnInit {
       this.optionsOfCasting = d
       console.log(this.optionsOfCasting)
     })
-    this.ordersService.getOptionOfisConcrete().subscribe((d) => {
-      this.OptionOfisConcrete = d
-      console.log(this.OptionOfisConcrete)
-    })
+    // this.ordersService.getOptionOfisConcrete().subscribe((d) => {
+    //   this.OptionOfisConcrete = d
+    //   console.log(this.OptionOfisConcrete)
+    // })
 
   }
 

@@ -9,7 +9,7 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   createUser(newUser) {
-    this.http.post("http://localhost:3000/createUser", newUser);
+    return this.http.post("http://localhost:3000/createUser", newUser);
   }
 
   validateUser() {

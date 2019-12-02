@@ -24,7 +24,7 @@
       </p>
       <div>
         <label for="email">Email&nbsp;&nbsp;</label>
-        <input type="text" name="email" [(ngModel)]="newUser.email" #email="ngModel">
+        <input type="email" name="email" [(ngModel)]="newUser.email" #email="ngModel">
         &nbsp;&nbsp;
         <label for="companyNumber">Company Number&nbsp;&nbsp;</label>
         <input type="text" name="companyNumber" [(ngModel)]="newUser.companyNumber" #companyNumber="ngModel">
@@ -32,10 +32,10 @@
       <br>
       <div>
         <label for="password">Password&nbsp;&nbsp;</label>
-        <input type="text" name="password" [(ngModel)]="newUser.password" #password="ngModel" required>
+        <input type="password" name="password" [(ngModel)]="newUser.password" #password="ngModel" required>
         &nbsp; &nbsp;
         <label for="password2">Re-enter Password&nbsp;&nbsp;</label>
-        <input type="text" name="password2" [(ngModel)]="password2" #ngPassword2="ngModel" required>
+        <input type="password" name="password2" [(ngModel)]="password2" #ngPassword2="ngModel" required>
       </div>
       <br>
       <button type="submit" [disabled]="!newUserForm.form.valid"
@@ -51,7 +51,7 @@
         <input type="text" name="userName" [(ngModel)]="userName" #ngUserName="ngModel">
         &nbsp;&nbsp;
         <label for="password">Password&nbsp;&nbsp;</label>
-        <input type="text" name="password" [(ngModel)]="password" #ngPassword="ngModel" required>
+        <input type="password" name="password" [(ngModel)]="password" #ngPassword="ngModel" required>
         &nbsp; &nbsp;
         <br><br>
         <button type="submit" [disabled]="!newUserForm.form.valid"

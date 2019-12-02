@@ -13,6 +13,20 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.get('/getOrders', async function (req, res) {
+  let orders = []
+  dbModule.connectionPromise.then(() => {
+    dbModule.getOrderFromDb(req.body)
+      .then((d) => {
+        orders = d;
+        res.send(orders);
+      })
+  })
+
+})
+
+
+
 
 app.listen(port, () => {
   console.log("I listen to port " + port);
@@ -28,22 +42,17 @@ app.get('/getOptionOfCasting', async function (req, res) {
           res.send(CastingArray)
         })
     })
-
 })
+
 app.get('/getOptionOfisConcrete', async function (req, res) {
-  let isConcrete;
-  dbModule.connectionPromise
-    .then((c) => {
-      dbModule.getOptionOfisConcrete()
-        .then((b) => {
-          console.log(b);
-          isConcrete = b;
-          res.send(isConcrete)
-        })
-    })
-
+  let isConcrete = await dbModule.getOptionOfisConcrete();
+  res.send(isConcrete);
 })
 
+app.post("/createUser", async function (req, res) {
+  let userIsCreated = await dbModule.insertNewUser(req.body);
+  res.send(userIsCreated);
+})
 app.get('/priceDetails', function (req, res) {
   let prices = [];
   dbModule.connectionPromise.then(() => {

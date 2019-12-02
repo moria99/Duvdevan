@@ -8,15 +8,34 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
+  createUser(newUser) {
+    this.http.post("http://localhost:3000/createUser", newUser);
+  }
+
+  validateUser() {
+
+  }
+
+
+  getOrders(x) {
+    return this.http.get('http://locallhot:3000/getOrders', x);
+  }
+
+  getOptionOfCasting() {
+    return this.http.get("http://localhost:3000/getOptionOfCasting")
+  }
 
   priceDetails() {
-     let b =this.http.get("http://localhost:3000/priceDetails");
-     return b
+    let b = this.http.get("http://localhost:3000/priceDetails");
+    return b
   }
-  
+
   totalPrice() {
-     let a =this.http.get("http://localhost:3000/totalPrice");
+    let a = this.http.get("http://localhost:3000/totalPrice");
     return a
   }
-  
-}
+  getOptionOfisConcrete() {
+    return this.http.get("http://localhost:3000/getOptionOfisConcrete");
+  }
+
+};

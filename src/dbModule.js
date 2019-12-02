@@ -1,22 +1,22 @@
-// const mysql = require('promise-mysql');
+<< << << < HEAD
+  // const mysql = require('promise-mysql');
+  ===
+  === =
+  //const mysql = require('promise-mysql');
+  >>>
+  >>> > 8 daf56d1e0bcba959ffa4d6eaf062ec4c4378c21
 const mssql = require('mssql');
 
 let db;
 
-// let connectionPromise = mysql.createPool({
+//let connectionPromise = mysql.createPool({
 let connectionPromise = mssql.connect({ //create conected to the data base
-    // connectionLimit: 100,
-    // host: "localhost",
-    // password: "beitar",
-    // database: "nisayon"
+    //connectionLimit: 100,
+    //host: "localhost",
     user: "chaya",
-    // ""
-    server: "DESKTOP-J1L2C19\\SQLEXPRESS",
+    server: "localhost", //"LENOVO\\SQLEXPRESS",
     password: "chaya",
-    // ""
     database: "Duvdevan"
-
-    // "DuvdevanDB"
   })
   .then((c) => { //it happened after the conection success
     db = c;
@@ -87,7 +87,7 @@ async function getAllPrices(req, res) {
 }
 
 async function getTotal(req, res) {
-  let d = db.query('SELECT MisHeshbonit,sachLifney,Hanacha,sachAcharey,Maham,SachHakolKolel FROM tblHMehirShura WHERE  MisHeshbonit = 111');
+  let d = db.query('SELECT MisHeshbonit,sachLifney,Hanacha,sachAcharey,Maham,SachHakolKolel FROM tblHMehir WHERE  MisHeshbonit = 111');
   let data = await d;
   return data;
 

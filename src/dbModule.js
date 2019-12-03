@@ -7,12 +7,12 @@ let db;
 let connectionPromise = mssql.connect({ //create conected to the data base
     // connectionLimit: 100,
     // host: "localhost",
-    user: "duvdevan",
+    user: "zaq",
     // server: "DESKTOP-2G2D206\\SQLEXPRESS",
     server: "localhost",
-    password: "duvdevan1!",
+    password: "zaq21wsx!",
     // "beitar",
-    database: "DuvdevanDB"
+    database: "Duvdevan"
     // "duvdevan"
     // "DuvdevanDB"
   })
@@ -49,7 +49,7 @@ async function getPumpType() {
   return pritimMasheva;
 }
 async function pushDetailsForm(f) {
-  
+
   let newForm = await db.query(`insert into dbo.AtblHovala (ShemLakoach,THovala,SHatchalatHovala,SugYetzika,KamutSchora,Plus,KodParitBeton,SugSchora,KamutNosefet) values (
     "${f.street}+' '+${f.houseNumber}+' '+${f.city}","${f.date}","${f.time}",
     "${f.sugYetzika.KodParit}","${f.quantity}","${f.isPlus}","${f.pritimBeton.KodParit}","${f.pritimMasheva.KodParit}",${f.hoseLength}")`);

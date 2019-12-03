@@ -9,9 +9,8 @@ import { OrdersService } from '../../services/orders/orders.service';
   styleUrls: ['./my-orders.component.css']
 })
 export class MyOrdersComponent implements OnInit {
-
   orders;
-  @Input() id: number;
+@Input() id:number
   constructor(private OrdersService: OrdersService) { }
 
   ngOnInit() {

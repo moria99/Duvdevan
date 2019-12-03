@@ -1,3 +1,74 @@
-<p>
-  price-details works!
-</p>
+<!DOCTYPE html>
+<html lang="he">
+
+
+<body>
+  <h1> המחיר להזמנתך הוא </h1>
+  <table align="right">
+    <tr>
+      <th>
+        <h2>מספר שורה</h2>
+      </th>
+      <th>
+        <h2>תיאור פריט </h2>
+      </th>
+      <th>
+        <h2>מחיר </h2>
+      </th>
+      <th>
+        <h2>כמות </h2>
+      </th>
+      <th>
+        <h2>סה"כ </h2>
+      </th>
+    </tr>
+
+
+    <tr *ngFor='let p of pricesArray'>
+      <td>{{p. MisShura}}</td>
+      <td>{{p.TeurParit}}</td>
+      <td>{{p.Mehir}}</td>
+      <td>{{p.Kamut}}</td>
+      <td>{{p.sachHakol}}</td>
+    </tr>
+
+  </table>
+
+  <table align="center">
+    <td class='input'>
+      <tr>
+        <h2>סה"כ ברוטו</h2>
+      </tr>
+      <tr>
+        <h2>{{total.AhuzHanacha}} % הנחה</h2>
+      </tr>
+      <tr>
+        <h2>סה"כ לפני מע"מ </h2>
+      </tr>
+      <tr>
+        <h2>{{total.AhuzMaham}} % מע"מ</h2>
+      </tr>
+      <tr>
+        <h2>סה"כ כולל מע"מ</h2>
+      </tr>
+    </td>
+
+    <td>
+      <tr>{{total.SachLifney}}</tr>
+      <tr>{{total.Hanacha}}</tr>
+      <tr>{{total.SachAcharey}}</tr>
+      <tr>{{total.Maham}}</tr>
+      <tr>{{total.SachHakolKolel}}</tr>
+    </td>
+
+  </table>
+  <button class="" onclick="">
+    <h3>הבא </h3>
+  </button>
+  <button class="" onclick="">
+    <h3>הקודם </h3>
+  </button>
+
+</body>
+
+</html>

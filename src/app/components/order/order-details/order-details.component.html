@@ -1,3 +1,36 @@
-<p>
-  order-details works!
-</p>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<div class="container">
+  <h1>פרטי הזמנה</h1>
+  <form #orderDetilsForm="ngForm" (ngSubmit)="saveFrom(orderDetilsForm)">
+
+
+
+    <!-- <input type="number" name="number" [(ngModel)]="order.userAdress.number" #number="ngModel" required>
+    <label for="city">מספר</label>
+
+    <input type="text" name="street" [(ngModel)]="order.userAdress.street" #street="ngModel" required>
+    <label for="street">רחוב</label>
+
+    <input type="text" name="city" [(ngModel)]="order.userAdress.city" #city="ngModel" required>
+    <label for="city">עיר</label>
+    <br> -->
+    <input type="time" name="time" [(ngModel)]="order.time" #time="ngModel" required>
+    <label for="time">שעה</label>
+
+    <input type="date" name="date" [(ngModel)]="order.date" #date="ngModel" required>
+    <label for="date">תאריך</label>
+    <input type="number" name="Quantity" [(ngModel)]="order.Quantity" #Quantity="ngModel" required>
+    <label for="Quantity">כמות</label>
+
+    <select id="d" *ngFor="let p of optionsOfCasting">
+      <option>{{p}}</option>
+    </select>
+    <select *ngFor="let c of OptionOfisConcrete">
+      <option>{{c}}</option>
+    </select>
+    <!-- type="date" name="date" [(ngModel)]="order.date" #date="ngModel" required> -->
+    <label for="date">תאריך</label>
+
+    <a routerLink="../{{id}}">go bace</a>

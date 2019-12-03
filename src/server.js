@@ -29,3 +29,38 @@ app.get('/getOrders'), async function (req, res) {
 app.listen(port, () => {
   console.log("I listen to port " + port);
 });
+
+
+//the functions
+app.get('/getOrders', async function (req, res) {
+  let orders = []
+  orders = await dbModule.getOrderFromDb(req.body);
+  res.send(orders);
+})
+
+app.get('/getOptionOfCasting', async function (req, res) {
+  let CastingArray;
+  CastingArray =  await dbModule.getCastingType();
+  res.send(CastingArray);
+})
+
+app.get('/getOptionOfisConcrete', async function (req, res) {
+  let isConcrete = await dbModule.getConcreteType();
+  res.send(isConcrete);
+})
+
+app.post("/createUser", async function (req, res) {
+  let userIsCreated = await dbModule.insertNewUser(req.body);
+  res.send(userIsCreated);
+})
+app.get('/priceDetails',async function (req, res) {
+  let prices = [];
+  prices = await dbModule.getAllPrices();
+  res.send(prices);
+});
+
+app.get('/totalPrice',async function (req, res) {
+  let total;
+  total = await dbModule.getTotal();
+  res.send(total);
+});

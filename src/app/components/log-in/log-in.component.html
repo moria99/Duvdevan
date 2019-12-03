@@ -18,7 +18,8 @@
         <input type="text" name="userName" [(ngModel)]="newUser.userName" #userName="ngModel">
         &nbsp;&nbsp;
         <label for="phone">Cell Phone&nbsp;&nbsp;</label>
-        <input type="text" name="phone" [(ngModel)]="newUser.phone" #phone="ngModel" required>
+        <input type="tel" pattern="^\d{3}\d{3}\d{4}$" name="phone" [(ngModel)]="newUser.phone" #phone="ngModel"
+          required>
       </div>
       <p style="font-size: 13px">* If no username is entered, the cell phone number will be used as your username.
       </p>

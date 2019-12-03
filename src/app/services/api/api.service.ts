@@ -16,7 +16,7 @@ export class ApiService {
 
   }
   getOrders(x) {
-    return this.http.get('http://locallhot:3000/getOrders', x);
+    return this.http.get('http://locallhost:3000/getOrders', x);
   }
 
   priceDetails() {
@@ -35,7 +35,7 @@ export class ApiService {
   getConcreteType() {
     return this.http.get("http://localhost:3000/getConcreteType");
   }
-  
+
   getPumpType() {
     return this.http.get("http://localhost:3000/getPumpType");
   }

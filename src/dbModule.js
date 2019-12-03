@@ -1,20 +1,17 @@
-// const mysql = require('promise-mysql');
-
-//const mysql = require('promise-mysql');
-
 const mssql = require('mssql');
 
 let db;
 
-
-//let connectionPromise = mysql.createPool({
 let connectionPromise = mssql.connect({ //create conected to the data base
     //connectionLimit: 100,
-    //host: "localhost",
+    // host: "localhost",
     user: "chaya",
-    server: "localhost", //"LENOVO\\SQLEXPRESS",
+    // ""
+    server: "localhost",
     password: "chaya",
+    // ""
     database: "Duvdevan"
+    // "DuvdevanDB"
   })
   .then((c) => { //it happened after the conection success
     db = c;
@@ -22,6 +19,7 @@ let connectionPromise = mssql.connect({ //create conected to the data base
   .catch((e) => {
     console.error(e);
   });
+
 
 module.exports = {
   connectionPromise,
@@ -55,9 +53,42 @@ async function pushDetailsForm(f) {
 }
 
 async function getOrderFromDb(id) {
-  let d = db.query("select * from dbo.AtblHovala where KodAvLakoach=" + id);
+  console.log("dbModdule");
+
+  let d = db.query("select * from AtblHovala");
+  //  where KolAvLakoch=" + id
   let orders = await d;
-  return orders
+  console.log(orders);
+
+  return orders;
+}
+
+async function getAllPrices() {
+  let d = db.query("select * from tblHMehirShura");
+  let data = await d;
+  console.log(data);
+  return data;
+}
+
+async function getTotal() {
+  let d = db.query('SELECT MisHeshbonit,sachLifney,Hanacha,sachAcharey,Maham,SachHakolKolel FROM tblHMehir');
+  // WHERE  MisHeshbonit = 111
+  let data = await d;
+  console.log(data);
+  return data;
+
+}
+async function insertNewUser(newUser) {
+  console.log(newUser);
+
+  // let c = db.query('insert into dbo.tblUsers (UserName ,PassName, HetPey, Selolar, EMail, KodLakoach) values ("' + newUser.userName + '", "' + newUser.password + '" , "' + newUser.companyNumber + '" , "' + newUser.phone + '" , "' + newUser.email + '" , "' + newUser.clientCode + '")');
+
+  let c = db.query("insert into dbo.tblUsers values ('" + newUser.userName + "', '" + newUser.password + "' , '" + newUser.companyNumber + "' , '" + newUser.phone + "' , '" + newUser.email + "')");
+  // , '" + newUser.clientCode + "'
+
+  let isRegistered = await c;
+  console.log(isRegistered);
+  return isRegistered;
 }
 
 async function getAllPrices() {
@@ -122,11 +153,6 @@ async function getPumpType(req, res) {
   return sugSchora;
 }
 
-async function getOrderFromDb(id) {
-  let d = db.query("select * from orders where KodAvLakoach=" + id);
-  let orders = await d;
-  return orders
-}
 
 async function getAllPrices(req, res) {
   let d = db.query("select * from tblHMehir");

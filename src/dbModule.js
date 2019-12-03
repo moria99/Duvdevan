@@ -1,10 +1,7 @@
-<< << << < HEAD
-  // const mysql = require('promise-mysql');
-  ===
-  === =
-  //const mysql = require('promise-mysql');
-  >>>
-  >>> > 8 daf56d1e0bcba959ffa4d6eaf062ec4c4378c21
+// const mysql = require('promise-mysql');
+
+//const mysql = require('promise-mysql');
+
 const mssql = require('mssql');
 
 let db;

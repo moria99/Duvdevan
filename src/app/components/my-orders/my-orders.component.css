@@ -1,7 +1,7 @@
 * {
   direction: rtl;
   text-align: center;
-  font: 1em sans-serif;
+  font: 1.05em ShiriLight;
 }
 
 table {
@@ -13,6 +13,6 @@ table {
 th {
   width: 100px;
   height: 50px;
-  background-color: gray;
+  background-color: rgb(190, 140, 140);
   border-bottom: 0px;
 }

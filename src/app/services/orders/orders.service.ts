@@ -16,12 +16,13 @@ export class OrdersService {
   getConcreteType() {
     return this.apiService.getConcreteType();
   }
-  
+
   getPumpType() {
     return this.apiService.getPumpType();
   }
 
   getFromData(x) {
+    console.log("jjj");
     return this.apiService.getOrders(x);
   }
 

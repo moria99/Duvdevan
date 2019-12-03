@@ -9,7 +9,9 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
   getOrders(x) {
-    return this.http.get('http://localhost:3000/getOrders', x)}
+    console.log("kkk");
+    return this.http.get('http://localhost:3000/getOrders', x)
+  }
 
   createUser(newUser) {
     return this.http.post("http://localhost:3000/createUser", newUser);
@@ -21,7 +23,8 @@ export class ApiService {
 
 
   getOptionOfCasting() {
-    return this.http.get("http://localhost:3000/getOptionOfCasting")}
+    return this.http.get("http://localhost:3000/getOptionOfCasting")
+  }
 
 
   priceDetails() {
@@ -40,7 +43,7 @@ export class ApiService {
   getConcreteType() {
     return this.http.get("http://localhost:3000/getConcreteType");
   }
-  
+
   getPumpType() {
     return this.http.get("http://localhost:3000/getPumpType");
   }

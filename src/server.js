@@ -33,14 +33,16 @@ app.listen(port, () => {
 
 //the functions
 app.get('/getOrders', async function (req, res) {
-  let orders = []
+  console.log("server");
+
+  let orders;
   orders = await dbModule.getOrderFromDb(req.body);
   res.send(orders);
 })
 
 app.get('/getOptionOfCasting', async function (req, res) {
   let CastingArray;
-  CastingArray =  await dbModule.getCastingType();
+  CastingArray = await dbModule.getCastingType();
   res.send(CastingArray);
 })
 
@@ -53,15 +55,15 @@ app.post("/createUser", async function (req, res) {
   let userIsCreated = await dbModule.insertNewUser(req.body);
   res.send(userIsCreated);
 })
-app.get('/priceDetails',async function (req, res) {
+app.get('/priceDetails', async function (req, res) {
   let prices = [];
-  prices =await dbModule.getAllPrices();
+  prices = await dbModule.getAllPrices();
   res.send(prices);
 });
 
 
-app.get('/totalPrice',async function (req, res) {
+app.get('/totalPrice', async function (req, res) {
   let total;
-  total =await dbModule.getTotal();
+  total = await dbModule.getTotal();
   res.send(total);
 });

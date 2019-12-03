@@ -20,15 +20,9 @@ let connectionPromise = mssql.connect({ //create conected to the data base
     console.error(e);
   });
 
-async function getOrdersFromDb(id) {
-  let d = ("select * from AtblHovala");
-  //  where KolAvLakoch=" + id
-  let orders = await d;
-  return orders;
-}
+
 module.exports = {
   connectionPromise,
-  getOrdersFromDb,
   insertNewUser,
   getOrderFromDb,
   getAllPrices,
@@ -59,9 +53,14 @@ async function pushDetailsForm(f) {
 }
 
 async function getOrderFromDb(id) {
-  let d = db.query("select * from dbo.AtblHovala where KodAvLakoach=" + id);
+  console.log("dbModdule");
+
+  let d = db.query("select * from AtblHovala");
+  //  where KolAvLakoch=" + id
   let orders = await d;
-  return orders
+  console.log(orders);
+
+  return orders;
 }
 
 async function getAllPrices() {

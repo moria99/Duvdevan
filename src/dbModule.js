@@ -9,7 +9,7 @@ let connectionPromise = mssql.connect({ //create conected to the data base
     // connectionLimit: 100,
     // host: "localhost",
     user: "zaq",
-    server: "LENOVO\\SQLEXPRESS01",
+    server: "localhost",
     password: "zaq21wsx!",
     database: "duvdevan"
 

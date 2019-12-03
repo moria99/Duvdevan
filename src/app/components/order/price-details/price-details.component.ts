@@ -19,11 +19,15 @@ export class PriceDetailsComponent implements OnInit {
   ngOnInit() {
 
     this.PriceDetails.priceDetails().subscribe((d) => {
+      console.log(d);
        this.pricesArray = d;
+       this.pricesArray =this.pricesArray.recordset;
     });
 
     this.PriceDetails.totalPrice().subscribe((d) => {
-      this.total =d[0];
+      console.log(d);
+      this.total =d;
+      this.total =this.total.recordset[0];
       // console.log(this.total); 
 
     });

@@ -9,20 +9,24 @@ export class OrdersService {
 
   constructor(private apiService: ApiService) { }
 
-  getOptionOfCasting() {
-    return this.apiService.getOptionOfCasting();
+  getCastingType() {
+    return this.apiService.getCastingType();
+  }
+
+  getConcreteType() {
+    return this.apiService.getConcreteType();
   }
   
-  getOptionOfisConcrete() {
-    return this.apiService.getOptionOfisConcrete();
+  getPumpType() {
+    return this.apiService.getPumpType();
   }
 
   getFromData(x) {
     return this.apiService.getOrders(x)
   }
 
-  saveOrder() {
-
+  saveOrder(newForm) {
+    return this.apiService.pushDetailsForm(newForm);
   }
 
   getOrder() {

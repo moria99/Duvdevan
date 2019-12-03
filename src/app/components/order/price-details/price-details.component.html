@@ -28,12 +28,12 @@
       <td>{{p.TeurParit}}</td>
       <td>{{p.Mehir}}</td>
       <td>{{p.Kamut}}</td>
-      <td>{{p.sachHakol}}</td>
+      <td>{{p.SachHakol}}</td>
     </tr>
 
   </table>
 
-  <table align="center" border="solid 2px">
+  <table *ngIf="total" align="center" border="solid 2px">
     <h1 align=center> המחיר להזמנתך הוא </h1>
 
     <tr class='input'>
@@ -50,9 +50,6 @@
 
       <td>
         <h2>{{total.Hanacha}}</h2>
-      </td>
-      <td>
-        <h2> הנחה</h2>
       </td>
       <td>
         <h2>{{total.Hanacha}} % אחוז הנחה</h2>

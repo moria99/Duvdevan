@@ -8,11 +8,25 @@ import { ApiService } from '../../services/api/api.service';
 export class OrdersService {
 
   constructor(private apiService: ApiService) { }
+
+  getCastingType() {
+    return this.apiService.getCastingType();
+  }
+
+  getConcreteType() {
+    return this.apiService.getConcreteType();
+  }
+  
+  getPumpType() {
+    return this.apiService.getPumpType();
+  }
+
   getFromData(x) {
     return this.apiService.getOrders(x);
   }
-  saveOrder() {
 
+  saveOrder(newForm) {
+    return this.apiService.pushDetailsForm(newForm);
   }
   getOrder() {
 

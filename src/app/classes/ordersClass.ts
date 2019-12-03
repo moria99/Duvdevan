@@ -9,6 +9,7 @@ class OrderDetails {
     public time: Time;
     public castingType: string;
     public quantity: number;
+    public isPlus:boolean;
     public isConcrete: boolean;
     public concreteType: string;
     public isAdvanced: boolean;
@@ -23,7 +24,7 @@ class OrderDetails {
     public hoseLength: number
 
     constructor(street: string, houseNumber: number, city: string,
-        date: Date, time: Time, castingType: string, quantity: number,
+        date: Date, time: Time, castingType: string, quantity: number,isPlus:boolean,
         isConcrete: boolean, concreteType: string, isAdvanced: boolean,
         advancedType1: string, advancedType2: string, advancedType3: string, advancedType4: string, advancedType5: string,
         isPump: boolean, pumpType: string, isRubberHose: boolean, hoseLength: number) {
@@ -34,6 +35,7 @@ class OrderDetails {
         this.time = time;
         this.castingType = castingType;
         this.quantity = quantity;
+        this.isPlus=isPlus;
         this.isConcrete = isConcrete;
         this.concreteType = concreteType;
         this.isAdvanced = isAdvanced;

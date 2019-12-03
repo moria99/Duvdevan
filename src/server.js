@@ -55,12 +55,13 @@ app.post("/createUser", async function (req, res) {
 })
 app.get('/priceDetails',async function (req, res) {
   let prices = [];
-  prices = await dbModule.getAllPrices();
+  prices =await dbModule.getAllPrices();
   res.send(prices);
 });
 
+
 app.get('/totalPrice',async function (req, res) {
   let total;
-  total = await dbModule.getTotal();
+  total =await dbModule.getTotal();
   res.send(total);
 });

@@ -18,7 +18,7 @@ export class LogInComponent implements OnInit {
   password;
 
   addNewUserToDb() {
-
+    // console.log("shalom");
     if (this.newUser.password === this.password2) {
 
       if (this.newUser.userName == null) {

@@ -3,7 +3,8 @@ const mssql = require('mssql');
 
 let db;
 
-// let connectionPromise = mysql.createPool({
+
+//let connectionPromise = mysql.createPool({
 let connectionPromise = mssql.connect({ //create conected to the data base
     // connectionLimit: 100,
     // host: "localhost",

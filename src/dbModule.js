@@ -8,7 +8,7 @@ let db;
    // host: "localhost",
     user: "duvdevan2",
     // ""
-    //server: "DESKTOP-2G2D206\\SQLEXPRESS",
+    server: "localhost",
     password: "Duvdevan1!!",
     // ""
     database: "Duvdevan"
@@ -22,7 +22,8 @@ let db;
   });
 
 async function getOrdersFromDb(id) {
-  let d = ("select * from orders where KolAvLakoch=" + id);
+  let d = ("select * from AtblHovala");
+  //  where KolAvLakoch=" + id
   let orders = await d;
   return orders;
 }

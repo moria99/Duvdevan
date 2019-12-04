@@ -13,48 +13,23 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.get('/getOrders'), async function (req, res) {
-  let orders = [];
-  dbModule.connectionPromise
-    .then(() => {
-      dbModule.getOrdersFromDb(req.body)
-        .then((d) => {
-          orders = d;
-          res.send(orders);
-        })
-
-    })
-
-}
 app.listen(port, () => {
   console.log("I listen to port " + port);
 });
 
-
-//the functions
 app.get('/getOrders', async function (req, res) {
-  console.log("server");
-
+  console.log("server")
   let orders;
   orders = await dbModule.getOrderFromDb(req.body);
   res.send(orders);
 })
 
-app.get('/getOptionOfCasting', async function (req, res) {
-  let CastingArray;
-  CastingArray = await dbModule.getCastingType();
-  res.send(CastingArray);
-})
-
-app.get('/getOptionOfisConcrete', async function (req, res) {
-  let isConcrete = await dbModule.getConcreteType();
-  res.send(isConcrete);
-})
 
 app.post("/createUser", async function (req, res) {
   let userIsCreated = await dbModule.insertNewUser(req.body);
   res.send(userIsCreated);
 })
+
 app.get("/getUsersToCheckAgainstUserNamesInDb", async function (req, res) {
   let userNamesReceived = await dbModule.getUsers();
   res.send(userNamesReceived);
@@ -64,7 +39,6 @@ app.get("/getUsersAndPassNamesToValidateExistingUserLogin", async function (req,
   let userNamesAndPassNamesReceived = await dbModule.getUsersAndTheirPasswords();
   res.send(userNamesAndPassNamesReceived);
 })
-
 
 app.get('/priceDetails', async function (req, res) {
   let prices = [];
@@ -77,4 +51,28 @@ app.get('/totalPrice', async function (req, res) {
   let total;
   total = await dbModule.getTotal();
   res.send(total);
+});
+
+app.get('/getCastingType', async function (req, res) {
+  console.log("server getCastingType work");
+  let sugYetzika=await dbModule.getCastingType();
+  res.send(sugYetzika);
+});
+
+app.get('/getConcreteType', async function (req, res) {
+  console.log("server getConcreteType work");
+  let pritimBeton= await dbModule.getConcreteType();
+  res.send(pritimBeton);
+});
+
+app.get('/getPumpType', async function (req, res) {
+  console.log("server getPumpType work");
+  let pritimMasheva= await dbModule.getPumpType();
+  res.send(pritimMasheva);
+});
+
+app.post('/pushDetailsForm', async function (req, res) {
+  let result = await dbModule.pushDetailsForm(req.body);
+  console.log(req.body);
+  res.send(result);
 });

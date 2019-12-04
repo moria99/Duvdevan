@@ -3,10 +3,15 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
+
 })
 export class ApiService {
 
   constructor(private http: HttpClient) { }
+  getOrders(x) {
+    console.log("kkk");
+    return this.http.get('http://localhost:3000/getOrders', x)
+  }
 
   createUser(newUser) {
     return this.http.post("http://localhost:3000/createUser", newUser);
@@ -16,9 +21,11 @@ export class ApiService {
 
   }
 
-  getOrders(x) {
-    return this.http.get('http://locallhot:3000/getOrders', x);
+
+  getOptionOfCasting() {
+    return this.http.get("http://localhost:3000/getOptionOfCasting")
   }
+
 
   priceDetails() {
     let b = this.http.get("http://localhost:3000/priceDetails");
@@ -36,7 +43,7 @@ export class ApiService {
   getConcreteType() {
     return this.http.get("http://localhost:3000/getConcreteType");
   }
-  
+
   getPumpType() {
     return this.http.get("http://localhost:3000/getPumpType");
   }

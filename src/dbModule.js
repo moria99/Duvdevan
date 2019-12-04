@@ -7,12 +7,12 @@ let db;
 let connectionPromise = mssql.connect({ //create conected to the data base
     // connectionLimit: 100,
     // host: "localhost",
-    user: "duvdevan",
+    user: "duvdevangroup3",
     // server: "DESKTOP-2G2D206\\SQLEXPRESS",
     server: "localhost",
-    password: "duvdevan1!",
+    password: "dakat37@gmail.com",
     // "beitar",
-    database: "DuvdevanDB"
+    database: "Duvdevan"
     // "duvdevan"
     // "DuvdevanDB"
   })
@@ -33,7 +33,8 @@ module.exports = {
   getConcreteType,
   getPumpType,
   pushDetailsForm,
-  getTotal
+  getTotal,
+  getUsers,
 };
 
 async function getCastingType() {
@@ -49,7 +50,7 @@ async function getPumpType() {
   return pritimMasheva;
 }
 async function pushDetailsForm(f) {
-  
+
   let newForm = await db.query(`insert into dbo.AtblHovala (ShemLakoach,THovala,SHatchalatHovala,SugYetzika,KamutSchora,Plus,KodParitBeton,SugSchora,KamutNosefet) values (
     "${f.street}+' '+${f.houseNumber}+' '+${f.city}","${f.date}","${f.time}",
     "${f.sugYetzika.KodParit}","${f.quantity}","${f.isPlus}","${f.pritimBeton.KodParit}","${f.pritimMasheva.KodParit}",${f.hoseLength}")`);
@@ -81,10 +82,17 @@ async function insertNewUser(newUser) {
 
   // let c = db.query('insert into dbo.tblUsers (UserName ,PassName, HetPey, Selolar, EMail, KodLakoach) values ("' + newUser.userName + '", "' + newUser.password + '" , "' + newUser.companyNumber + '" , "' + newUser.phone + '" , "' + newUser.email + '" , "' + newUser.clientCode + '")');
 
-  let c = db.query("insert into dbo.tblUsers values ('" + newUser.userName + "', '" + newUser.password + "' , '" + newUser.companyNumber + "' , '" + newUser.phone + "' , '" + newUser.email + "')");
+  let c = db.query("insert into dbo.tblUsers values ('" + newUser.userName + "', '" + newUser.password + "' , '" + newUser.companyNumber + "' , '" + newUser.phone + "' , '" + newUser.email + "' , '" + newUser.clientCode + " ')");
   // , '" + newUser.clientCode + "'
 
   let isRegistered = await c;
-  console.log(isRegistered);
+  console.log("dfffg" + isRegistered);
   return isRegistered;
+}
+
+async function getUsers() {
+  let c = db.query("select dbo.tblUsers.UserName from dbo.tblUsers");
+  let userNameListFromDbReturned = await c;
+  //console.log(userNameListFromDbReturned);
+  return userNameListFromDbReturned;
 }

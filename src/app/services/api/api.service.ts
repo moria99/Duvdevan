@@ -11,6 +11,10 @@ export class ApiService {
   createUser(newUser) {
     return this.http.post("http://localhost:3000/createUser", newUser);
   }
+  getUserNames() {
+    return this.http.get("http://localhost:3000/getUsersToCheckAgainstUserNamesInDb");
+  }
+
 
   validateUser() {
 

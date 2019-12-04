@@ -16,30 +16,49 @@ export class LogInComponent implements OnInit {
 
   userName;
   password;
+  allUserNamesFromDb;
+
 
   addNewUserToDb() {
-    // console.log("shalom");
+
+    this.usersService.checkUserName().subscribe((r) => {
+      let result;
+      result = r;
+      this.allUserNamesFromDb = result.recordset;
+
+      console.log("we are inside comp.ts after checkuserName from UserService");
+      console.log(this.allUserNamesFromDb);
+
+      for (let u of this.allUserNamesFromDb) {
+        if (this.newUser.userName == u.UserName) {
+          alert("This username is already taken - please choose a different username.");
+        }
+      }
+    });
+
+
+
     if (this.newUser.password === this.password2) {
 
-      if (this.newUser.userName == null) {
+      if (this.newUser.userName == "") {
         this.newUser.userName = this.newUser.phone;
       }
+      // if (this.newUser.userName !== "")
+      this.newUser.clientCode = this.newUser.userName;
+      // else
+      //   this.newUser.clientCode = this.newUser.phone; 
+      if (this.allUserNamesFromDb) {
+        this.usersService.createUser(this.newUser);
+        console.log("after");
 
-      if (this.newUser.companyNumber !== null) {
-        this.newUser.clientCode = this.newUser.companyNumber;
-      }
-      else {
-        if (this.newUser.userName !== null)
-          this.newUser.clientCode = this.newUser.userName;
-        else
-          this.newUser.clientCode = this.newUser.phone;
+        alert("You are successfully registered and your Client Code is " + this.newUser.clientCode + " .");
       }
 
-      this.usersService.createUser(this.newUser);
-      console.log("after");
     }
-    else { alert("Password fields do not match - please try again."); }
 
+    else {
+      alert("Password fields do not match - please try again.");
+    }
   }
 
   startValidation() {

@@ -15,6 +15,11 @@ export class UsersService {
       return result;
     });
   }
+  checkUserName() {
+    return this.apiService.getUserNames();
+  }
+
+
 
   validateUser(userName, password) {
 

@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { OrderDetails } from '../../classes/OrderDetails';
-import { OrdersService } from '../../services/orders/orders.service';
+import { OrdersService } from '../services/orders/orders.service';
 
 
 @Component({
@@ -10,19 +9,18 @@ import { OrdersService } from '../../services/orders/orders.service';
 })
 export class MyOrdersComponent implements OnInit {
   orders;
-  @Input() id: number
+@Input() id:number
   constructor(private OrdersService: OrdersService) { }
 
   ngOnInit() {
     console.log("kkkoo");
-
+    
     this.OrdersService.getFromData(this.id).subscribe((d) => {
       console.log("hhhh");
       this.orders = d;
-      this.orders = this.orders.recordset;
-      //this.orders.THovala = this.orders.THovala;
-      console.log(this.orders.THovala);
-
+      this.orders=this.orders.recordset;
+      console.log(this.orders);
+      
     })
   }
 

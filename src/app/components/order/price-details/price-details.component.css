@@ -1,0 +1,24 @@
+* {
+  direction: rtl;
+  text-align: center;
+  font: 1em sans-serif;
+}
+
+table {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+th {
+  width: 100px;
+  height: 50px;
+  color: white;
+  background-color: rgb(135, 185, 250);
+  border-bottom: 0px;
+}
+
+button {
+  color: white;
+  background-color: rgb(135, 185, 250);
+}

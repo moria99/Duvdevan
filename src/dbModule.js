@@ -33,6 +33,7 @@ module.exports = {
   pushDetailsForm,
   getTotal,
   getUsers,
+  getUsersAndTheirPasswords,
 };
 
 async function getCastingType() {
@@ -124,57 +125,13 @@ async function insertNewUser(newUser) {
 async function getUsers() {
   let c = db.query("select dbo.tblUsers.UserName from dbo.tblUsers");
   let userNameListFromDbReturned = await c;
-
+  //console.log(userNameListFromDbReturned);
   return userNameListFromDbReturned;
 }
 
-async function getCastingType(req, res) {
-  let sugYetzika = await db.query("SELECT TOP (100) PERCENT SugYetzika FROM  dbo.AtblHovala WHERE (SugYetzika IS NOT NULL) ORDER BY SugYetzika");
-  return sugYetzika;
-}
-async function getConcreteType(req, res) {
-  let teurParit = await db.query("SELECT TOP (100) PERCENT KodParit,TeurParit FROM  dbo.AtblPritimBeton WHERE (TeurParit IS NOT NULL) ORDER BY TeurParit");
-  return teurParit;
-}
-async function getAdvancedType1(req, res) {
-  let sugBeton = await db.query("SELECT TOP (100) PERCENT KodParit,SugBeton FROM  dbo.AtblPritimBeton WHERE (SugBeton IS NOT NULL) ORDER BY SugBeton");
-  return sugBeton;
-}
-async function getAdvancedType2(req, res) {
-  let chozek = await db.query("SELECT TOP (100) PERCENT KodParit,SugBeton FROM  dbo.AtblPritimBeton WHERE (SugBeton IS NOT NULL) ORDER BY SugBeton");
-  return chozek;
-}
-async function getAdvancedType3(req, res) {
-  let tzorechBeton = await db.query("SELECT TOP (100) PERCENT KodParit,TzorechBeton FROM  dbo.AtblPritimBeton WHERE (SugBeton IS NOT NULL) ORDER BY TzorechBeton");
-  return tzorechBeton;
-}
-async function getAdvancedType4(req, res) {
-  let dargatChasifa = await db.query("SELECT TOP (100) PERCENT KodParit,DargatChasifa FROM  dbo.AtblPritimBeton WHERE (SugBeton IS NOT NULL) ORDER BY DargatChasifa");
-  return dargatChasifa;
-}
-async function getAdvancedType5(req, res) {
-  let somechBeton = await db.query("SELECT TOP (100) PERCENT KodParit,SomechBeton FROM  dbo.AtblPritimBeton WHERE (SugBeton IS NOT NULL) ORDER BY SomechBeton");
-  return somechBeton;
-}
-async function getPumpType(req, res) {
-  let sugSchora = await db.query("SELECT TOP (100) PERCENT SugSchora FROM  dbo.AtblHovala WHERE (SugSchora IS NOT NULL) ORDER BY SugSchora");
-  return sugSchora;
-}
-
-
-async function getAllPrices(req, res) {
-  let d = db.query("select * from tblHMehir");
-  let data = await d;
-  return data;
-}
-
-async function getTotal(req, res) {
-  let d = db.query("select * from tblHMehirShura");
-  let data = await d;
-  return data;
-}
-async function insertNewUser(newUser) {
-  let c = db.query('insert into tblUsers values (' + newUser.UserName + ',' + newUser.PassName + ',' + newUser.HetPey + ',' + newUser.Selolar + ',' + newUser.EMail + ',' + newUser.KodLakoach + ')');
-  let isRegistered = await c;
-  return isRegistered;
+async function getUsersAndTheirPasswords() {
+  let c = db.query("select dbo.tblUsers.UserName , dbo.tblUsers.PassName from dbo.tblUsers");
+  let userNameAndPassnameListFromDbReturned = await c;
+  console.log(userNameAndPassnameListFromDbReturned);
+  return userNameAndPassnameListFromDbReturned;
 }

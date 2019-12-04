@@ -60,6 +60,11 @@ app.get("/getUsersToCheckAgainstUserNamesInDb", async function (req, res) {
   res.send(userNamesReceived);
 })
 
+app.get("/getUsersAndPassNamesToValidateExistingUserLogin", async function (req, res) {
+  let userNamesAndPassNamesReceived = await dbModule.getUsersAndTheirPasswords();
+  res.send(userNamesAndPassNamesReceived);
+})
+
 
 app.get('/priceDetails', async function (req, res) {
   let prices = [];

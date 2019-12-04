@@ -19,10 +19,8 @@ export class ApiService {
   getUserNames() {
     return this.http.get("http://localhost:3000/getUsersToCheckAgainstUserNamesInDb");
   }
-
-
   validateUser() {
-
+    return this.http.get("http://localhost:3000/getUsersAndPassNamesToValidateExistingUserLogin");
   }
 
 

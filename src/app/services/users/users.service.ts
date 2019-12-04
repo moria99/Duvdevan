@@ -19,13 +19,9 @@ export class UsersService {
     return this.apiService.getUserNames();
   }
 
-
-
-  validateUser(userName, password) {
-
+  validateUserNameAndPassName() {
+    return this.apiService.validateUser();
   }
 
-  // login() {
-
-  // }
+  
 }

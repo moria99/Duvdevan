@@ -15,12 +15,13 @@ export class UsersService {
       return result;
     });
   }
-
-  validateUser(userName, password) {
-
+  checkUserName() {
+    return this.apiService.getUserNames();
   }
 
-  // login() {
+  validateUserNameAndPassName() {
+    return this.apiService.validateUser();
+  }
 
-  // }
+  
 }

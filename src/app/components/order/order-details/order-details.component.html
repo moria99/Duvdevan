@@ -1,4 +1,3 @@
-
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <div class="container">
@@ -6,13 +5,13 @@
     פרטי הזמנה
   </h1>
   <form #orderDetailsForm="ngForm" (ngSubmit)="SaveDetailsForm(orderDetailsForm)">
-    <div id="UserAdress">
-      <input type="number" name="houseNumber" required [(ngModel)]="details.houseNumber" #number="ngModel">
-      <label for="houseNumber">&nbsp;מספר</label>
-      <input type="text" name="street" required [(ngModel)]="details.street" #street="ngModel">
-      <label for="street">&nbsp;רחוב</label>
-      <input type="text" name="city" required [(ngModel)]="details.city" #city="ngModel">
-      <label for="city">&nbsp;עיר</label>
+    <div id="UserAddress">
+      <input type="number" name="HouseNumber" [(ngModel)]="houseNumber" #HouseNumber="ngModel" required>
+      <label for="HouseNumber">&nbsp;מספר</label>
+      <input type="text" name="Street" [(ngModel)]="street" #Street="ngModel" required>
+      <label for="Street">&nbsp;רחוב</label>
+      <input type="text" name="City" [(ngModel)]="city" #City="ngModel" required>
+      <label for="City">&nbsp;עיר</label>
     </div>
     <br>
     <div>
@@ -23,59 +22,62 @@
     </div>
     <br>
     <div>
-      <select>
-        <option *ngFor="let sugYetzika of optionsOfCastingType">{{sugYetzika.TeurParit}}</option>
+      <select name="sugYetzikaKodParit" [(ngModel)]="details.sugYetzikaKodParit" #sugYetzikaKodParit="ngModel">
+        <option *ngFor="let sugYetzika of optionsOfCastingType" value={{sugYetzika.KodParit}}>{{sugYetzika.TeurParit}}</option>
       </select>
-      <label for="castingType">&nbsp;סוגי יציקה</label>
+      <label for="sugYetzikaKodParit">&nbsp;סוגי יציקה</label>
     </div>
     <div>
-      <input type="checkbox" name="isPlus" value="true" [(ngModel)]="details.isPlus" #isConcrete="ngModel">
-      <label for="isPlus">האם הכמות יכולה לגדול</label>
+      <input type="checkbox" name="IsPlus" value="true" [(ngModel)]="isPlus" #IsPlus="ngModel">
+      <label for="IsPlus">האם הכמות יכולה לגדול</label>
       <input type="number" name="quantity" [(ngModel)]="details.quantity" #quantity="ngModel" required>
       <label for="quantity">&nbsp;כמות</label>
     </div>
-    <input type="checkbox" name="isConcrete" value="true" [(ngModel)]="details.isConcrete" #isConcrete="ngModel">
-    <label for="isConcrete">מעוניין להזמין בטון</label>
-    <div *ngIf="details.isConcrete">
-      <select>
-        <option *ngFor="let pritimBeton of optionsOfConcreteType">{{pritimBeton.TeurParit}}</option>
+    <input type="checkbox" name="IsConcrete" value="true" [(ngModel)]="isConcrete" #IsConcrete="ngModel">
+    <label for="IsConcrete">מעוניין להזמין בטון</label>
+    <div *ngIf="isConcrete">
+      <select name="pritimBetonKodParit" [(ngModel)]="details.pritimBetonKodParit" #pritimBetonKodParit="ngModel">
+        <option *ngFor="let pritimBeton of optionsOfConcreteType" value={{pritimBeton.KodParit}}>{{pritimBeton.TeurParit}}</option>
       </select>
-      <input type="checkbox" name="isAdvanced" value="true" [(ngModel)]="details.isAdvanced" #isAdvanced="ngModel">
-      <label for="isAdvanced">מתקדם</label><br>
-      <div *ngIf="details.isAdvanced">
-        <select [(ngModel)]="details.advancedType1">
-          <option *ngFor="let pritimBeton of optionsOfConcreteType">{{pritimBeton.SugBeton}}</option>
+      <input type="checkbox" name="IsAdvanced" value="true" [(ngModel)]="isAdvanced" #IsAdvanced="ngModel">
+      <label for="IsAdvanced">מתקדם</label><br>
+      <div *ngIf="isAdvanced">
+        <select name="AdvancedType1" [(ngModel)]="advancedType1" #AdvancedType1="ngModel">
+          <option *ngFor="let pritimBeton of optionsOfConcreteType">{{pritimBeton.SugBeton}}
+          </option>
         </select>
-        <select [(ngModel)]="details.advancedType2">
+        <select name="AdvancedType2" [(ngModel)]="advancedType2" #AdvancedType2="ngModel">
           <option *ngFor="let pritimBeton of optionsOfConcreteType">{{pritimBeton.Chozek}}</option>
         </select>
-        <select [(ngModel)]="details.advancedType3">
-          <option *ngFor="let pritimBeton of optionsOfConcreteType">{{pritimBeton.TzorechBeton}}</option>
+        <select name="AdvancedType3" [(ngModel)]="advancedType3" #AdvancedType3="ngModel">
+          <option *ngFor="let pritimBeton of optionsOfConcreteType">{{pritimBeton.TzorechBeton}}
+          </option>
         </select>
-        <select [(ngModel)]="details.advancedType4">
-          <option *ngFor="let pritimBeton of optionsOfConcreteType">{{pritimBeton.DargatChasifa}}</option>
+        <select name="AdvancedType4" [(ngModel)]="advancedType4" #AdvancedType4="ngModel">
+          <option *ngFor="let pritimBeton of optionsOfConcreteType">{{pritimBeton.DargatChasifa}}
+          </option>
         </select>
-        <select [(ngModel)]="details.advancedType5">
-          <option *ngFor="let pritimBeton of optionsOfConcreteType">{{pritimBeton.SomechBeton}}</option>
+        <select name="AdvancedType5" [(ngModel)]="advancedType5" #AdvancedType5="ngModel">
+          <option *ngFor="let pritimBeton of optionsOfConcreteType">{{pritimBeton.SomechBeton}}
+          </option>
         </select>
       </div><br>
     </div>
     <div>
-      <input type="checkbox" name="isPump" value="true" [(ngModel)]="details.isPump" #isPump="ngModel">
-      <label for="isPump">&nbsp;מעוניין להזמין משאבה</label><br>
-      <div *ngIf="details.isPump">
-        <select>
-          <option *ngFor="let pritimMasheva of optionsOfPumpType">{{pritimMasheva.TeurParit}}</option>
+      <input type="checkbox" name="IsPump" value="true" [(ngModel)]="isPump" #IsPump="ngModel">
+      <label for="IsPump">&nbsp;מעוניין להזמין משאבה</label><br>
+      <div *ngIf="isPump">
+        <select name="pritimMashevaKodParit" [(ngModel)]="details.pritimMashevaKodParit" #pritimMashevaKodParit="ngModel">
+          <option *ngFor="let pritimMasheva of optionsOfPumpType" value={{pritimMasheva.KodParit}}>{{pritimMasheva.TeurParit}}</option>
         </select>
-        <input type="checkbox" name="isRubberHose" value="true" [(ngModel)]="details.isRubberHose"
-          #isRubberHose="ngModel">
-        <label for="isRubberHose">&nbsp;תוספת צינור גומי</label><br>
-        <input *ngIf="details.isRubberHose" type="number" name="hoseLength" [(ngModel)]="details.hoseLength"
+        <input type="checkbox" name="IsRubberHose" value="true" [(ngModel)]="isRubberHose" #IsRubberHose="ngModel">
+        <label for="IsRubberHose">&nbsp;תוספת צינור גומי</label><br>
+        <input *ngIf="isRubberHose" type="number" name="hoseLength" [(ngModel)]="details.hoseLength"
           #hoseLength="ngModel" required>
         <label for="hoseLength">&nbsp;אורך הצינור</label><br>
       </div>
     </div>
-    <button type="submit" [disabled]="orderDetailsForm.form.invalid"><a routerLink="../{{id}}">הבא</a></button>
+    <button type="submit" [disabled]="orderDetailsForm.form.invalid">הבא</button>
   </form>
 </div>
 

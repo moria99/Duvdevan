@@ -16,21 +16,20 @@ export class OrdersService {
   getConcreteType() {
     return this.apiService.getConcreteType();
   }
-  
+
   getPumpType() {
     return this.apiService.getPumpType();
   }
 
   getFromData(x) {
-    return this.apiService.getOrders(x)
+    console.log("jjj");
+    return this.apiService.getOrders(x);
   }
 
   saveOrder(newForm) {
     return this.apiService.pushDetailsForm(newForm);
   }
-
   getOrder() {
 
   }
-
 }

@@ -7,42 +7,32 @@ import { OrderDetailsComponent } from './components/order/order-details/order-de
 import { PriceDetailsComponent } from './components/order/price-details/price-details.component';
 import { UserDetailsComponent } from './components/order/user-details/user-details.component';
 import { PaymentComponent } from './components/order/payment/payment.component';
+import { MyOrdersComponent } from './components/my-orders/my-orders.component';
 
 export const routesConfiguration: Routes = [
     {
         path: '',
+        component: OrderDetailsComponent,
+    },
+    {
+        path: 'log-in',
+        component: LogInComponent,
         children: [
             {
-                path: 'log-in',
+                path: ':id',
                 component: LogInComponent,
-                children: [
-                    {
-                        path: 'log-in',
-                        component: LogInComponent,
-                    },
-            },
-            {
-                path: 'order',
-                component: OrderComponent,
-                children: [
-                    {
-                        path: 'newOrder',
-                        component: OrderDetailsComponent,
-                    },
-                    {
-                        path: 'price/:id',
-                        component: PriceDetailsComponent,
-                    },
-                    {
-                        path: 'log-in/:id',
-                        component: UserDetailsComponent,
-                    },
-                    {
-                        path: 'payment/:id',
-                        component: PaymentComponent,
-                    }
-                ]
-            }
-        ]
+            }]
+    },
+    {
+        path: 'price/:id',
+        component: PriceDetailsComponent,
+    },
+    {
+        path: 'payment/:id',
+        component: PaymentComponent,
+    },
+    {
+        path: 'myOrders/:id',
+        component: MyOrdersComponent,
     }
-];
+]

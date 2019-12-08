@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { OrdersService } from '../../../services/orders/orders.service';
-import { OrderDetails } from '../../../classes/ordersClass';
+import { DetailsService } from '../details.service';
+import { OrderDetails } from '../classes/orderClass';
 @Component({
   selector: 'app-order-details',
   templateUrl: './order-details.component.html',
@@ -25,25 +25,29 @@ export class OrderDetailsComponent implements OnInit {
   isRubberHose: boolean = false;
   isPlus: boolean = false;
 
-  constructor(private detailsService: OrdersService) { }
-
   checkAdvancedType(): string {
     for (let sug of this.optionsOfConcreteType) {
-      if (sug.SugBeton == this.advancedType1 && sug.Chozek == this.advancedType2 && sug.TzorechBeton == this.advancedType3 && sug.DargatChasifa == this.advancedType4 && sug.SomechBeton == this.advancedType5)
+
+      if (sug.SugBeton == this.advancedType1 && sug.Chozek == this.advancedType2 && sug.TzorechBeton == this.advancedType3 && sug.DargatChasifa == this.advancedType4 && sug.SomechBeton == this.advancedType5) {
+
         return sug.KodParit;
+      }
     }
-    alert("'לא קיים צרוף כזה ב'בטון מתקדם");
+    this.details.pritimBetonKodParit="";
+    alert("לא קיים צרוף כזה בבטון מתקדם");
   }
 
   SaveDetailsForm(orderDetailsForm) {
+
     this.details.userAddress = this.street + " " + this.houseNumber + " " + this.city;
     this.details.plus = String(this.isPlus);
-    
-    if (this.isRubberHose) {
-      alert("יש להזין אורך צינור");
-    }
+
     if (this.isAdvanced) {
       this.details.pritimBetonKodParit = this.checkAdvancedType();
+    }
+
+    if (this.isRubberHose && !this.details.hoseLength) {
+      alert("יש להזין אורך צינור");
     }
 
     let newForm = new OrderDetails(this.details.userAddress,
@@ -53,12 +57,12 @@ export class OrderDetailsComponent implements OnInit {
       this.details.pritimBetonKodParit,
       this.details.pritimMashevaKodParit, this.details.hoseLength);
 
-    console.log(newForm);
-    this.detailsService.saveOrder(newForm).subscribe((d) => {
+    this.detailsService.pushDetailsForm(newForm).subscribe((d) => {
       orderDetailsForm.reset();
     });
   }
 
+  constructor(private detailsService: DetailsService) { }
 
   ngOnInit() {
 
@@ -66,19 +70,17 @@ export class OrderDetailsComponent implements OnInit {
 
       this.optionsOfCastingType = d;
       this.optionsOfCastingType = this.optionsOfCastingType.recordset;
-      console.log(this.optionsOfCastingType);
     });
     this.detailsService.getConcreteType().subscribe((d) => {
 
       this.optionsOfConcreteType = d;
       this.optionsOfConcreteType = this.optionsOfConcreteType.recordset;
-      console.log(this.optionsOfConcreteType);
     });
     this.detailsService.getPumpType().subscribe((d) => {
 
       this.optionsOfPumpType = d;
       this.optionsOfPumpType = this.optionsOfPumpType.recordset;
-      console.log(this.optionsOfPumpType);
     });
   }
 }
+

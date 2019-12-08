@@ -5,12 +5,12 @@ let db;
 let connectionPromise = mssql.connect({ //create conected to the data base
     //connectionLimit: 100,
     // host: "localhost",
-    user: "zaq",
+    user: "duvdevan",
     // server: "DESKTOP-2G2D206\\SQLEXPRESS",
     server: "localhost",
-    password: "zaq21wsx!",
+    password: "duvdevan1!",
     // "beitar",
-    database: "Duvdevan"
+    database: "DuvdevanDB"
     // "duvdevan"
     // "DuvdevanDB"
   })

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DetailsService } from '../details.service';
-import { OrderDetails } from '../classes/orderClass';
+import { OrdersService } from '../../../services/orders/orders.service';
+import { OrderDetails } from '../../../classes/ordersClass';
 @Component({
   selector: 'app-order-details',
   templateUrl: './order-details.component.html',
@@ -57,12 +57,12 @@ export class OrderDetailsComponent implements OnInit {
       this.details.pritimBetonKodParit,
       this.details.pritimMashevaKodParit, this.details.hoseLength);
 
-    this.detailsService.pushDetailsForm(newForm).subscribe((d) => {
+    this.detailsService.saveOrder(newForm).subscribe((d) => {
       orderDetailsForm.reset();
     });
   }
 
-  constructor(private detailsService: DetailsService) { }
+  constructor(private detailsService: OrdersService) { }
 
   ngOnInit() {
 

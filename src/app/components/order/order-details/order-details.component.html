@@ -7,11 +7,11 @@
 <div class="container">
   <form #orderDetailsForm="ngForm" (ngSubmit)="SaveDetailsForm(orderDetailsForm)">
     <div id="UserAddress">
-      <input type="number" name="HouseNumber" [(ngModel)]="houseNumber" #HouseNumber="ngModel" required>
+      <input type="number" name="HouseNumber" [(ngModel)]="houseNumber" #HouseNumber="ngModel" required placeholder="*">
       <label for="HouseNumber">&nbsp;מספר</label>
-      <input type="text" name="Street" [(ngModel)]="street" #Street="ngModel" required>
+      <input type="text" name="Street" [(ngModel)]="street" #Street="ngModel" required placeholder="*">
       <label for="Street">&nbsp;רחוב</label>
-      <input type="text" name="City" [(ngModel)]="city" #City="ngModel" required>
+      <input type="text" name="City" [(ngModel)]="city" #City="ngModel" required placeholder="*">
       <label for="City">&nbsp;עיר</label>
     </div>
     <br>
@@ -32,7 +32,7 @@
     <div>
       <input type="checkbox" name="IsPlus" value="true" [(ngModel)]="isPlus" #IsPlus="ngModel">
       <label for="IsPlus">האם הכמות יכולה לגדול</label>
-      <input type="number" name="quantity" [(ngModel)]="details.quantity" #quantity="ngModel" required>
+      <input type="number" name="quantity" [(ngModel)]="details.quantity" #quantity="ngModel" required  placeholder="*">
       <label for="quantity">&nbsp;כמות</label>
     </div>
     <input type="checkbox" name="IsConcrete" value="true" [(ngModel)]="isConcrete" #IsConcrete="ngModel">
@@ -78,7 +78,7 @@
         <input type="checkbox" name="IsRubberHose" value="true" [(ngModel)]="isRubberHose" #IsRubberHose="ngModel">
         <label for="IsRubberHose">&nbsp;תוספת צינור גומי</label><br>
         <input *ngIf="isRubberHose" type="number" name="hoseLength" [(ngModel)]="details.hoseLength"
-          #hoseLength="ngModel">
+          #hoseLength="ngModel"  placeholder="*">
         <label for="hoseLength">&nbsp;אורך הצינור</label><br>
       </div>
     </div>

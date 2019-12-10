@@ -22,3 +22,7 @@ button {
   color: white;
   background-color: rgb(135, 185, 250);
 }
+
+a{
+    text-decoration-line: none;
+}

@@ -5,12 +5,12 @@ import { LogInComponent } from './components/log-in/log-in.component';
 import { OrderComponent } from './components/order/order.component';
 import { OrderDetailsComponent } from './components/order/order-details/order-details.component';
 import { PriceDetailsComponent } from './components/order/price-details/price-details.component';
-<<<<<<< HEAD
-=======
+
+
 import { UserDetailsComponent } from './components/order/user-details/user-details.component';
 import { PaymentComponent } from './components/order/payment/payment.component';
 import { MyOrdersComponent } from './components/my-orders/my-orders.component';
->>>>>>> 7b4818207bd985370f433ce077128a4f2e4c003d
+
 
 export const routesConfiguration: Routes = [
     {
@@ -23,12 +23,7 @@ export const routesConfiguration: Routes = [
         children: [
 
             {
-<<<<<<< HEAD
-                path: 'log-in',
-                component: LogInComponent,
-            },
 
-            {
                 path: 'log-in/:code',
                 component: LogInComponent,
             },
@@ -41,7 +36,7 @@ export const routesConfiguration: Routes = [
                         component: OrderDetailsComponent,
                     },
                     {
-                        path: 'price-details/:c',
+                        path: 'price-details',
                         component: PriceDetailsComponent,
                     },
                     {
@@ -51,22 +46,25 @@ export const routesConfiguration: Routes = [
                 ]
             }
         ]
-=======
-                path: ':id',
-                component: LogInComponent,
-            }]
-    },
-    {
-        path: 'price/:id',
-        component: PriceDetailsComponent,
-    },
-    {
-        path: 'payment/:id',
-        component: PaymentComponent,
-    },
-    {
-        path: 'myOrders/:id',
-        component: MyOrdersComponent,
->>>>>>> 7b4818207bd985370f433ce077128a4f2e4c003d
     }
 ]
+      
+
+//                 path: ':id',
+//                 component: LogInComponent,
+//             }]
+//     },
+//     {
+//         path: 'price/:id',6
+//         component: PriceDetailsComponent,
+//     },
+//     {
+//         path: 'payment/:id',
+//         component: PaymentComponent,
+//     },
+//     {
+//         path: 'myOrders/:id',
+//         component: MyOrdersComponent,
+
+//     }
+// 

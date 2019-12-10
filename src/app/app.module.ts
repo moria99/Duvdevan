@@ -17,6 +17,8 @@ import { UsersService } from '../app/services/users/users.service';
 
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ApiService } from './services/api/api.service';
+import { OrdersService } from './services/orders/orders.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     RouterModule.forRoot(routesConfiguration),
   ],
-  providers: [UsersService, PriceDetailsService],
+  providers: [UsersService, PriceDetailsService, ApiService, OrdersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

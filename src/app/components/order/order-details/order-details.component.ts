@@ -1,48 +1,86 @@
-import { Component, OnInit } from '@angular/core';
-import { OrdersService } from 'src/app/services/orders/orders.service';
-import { OrderDetails } from 'src/app/classes/ordersClass';
-
+import { Component, OnInit, Input } from '@angular/core';
+import { OrdersService } from '../../../services/orders/orders.service';
+import { OrderDetails } from '../../../classes/ordersClass';
 @Component({
   selector: 'app-order-details',
   templateUrl: './order-details.component.html',
   styleUrls: ['./order-details.component.css']
 })
 export class OrderDetailsComponent implements OnInit {
-
-  details: OrderDetails = new OrderDetails("", null, "", null, null, "", null, false, false, "", false, "", "", "", "", "", false, "", false, null);
+  details: OrderDetails = new OrderDetails("", null, null, "", null, "", "", "", null);
   optionsOfCastingType;
   optionsOfConcreteType;
   optionsOfPumpType;
+  street: string = "";
+  houseNumber: number = null;
+  city: string = "";
+  advancedType1;
+  advancedType2;
+  advancedType3;
+  advancedType4;
+  advancedType5;
+  isConcrete: boolean = false;
+  isAdvanced: boolean = false;
+  isPump: boolean = false;
+  isRubberHose: boolean = false;
+  isPlus: boolean = false;
 
-  constructor(private ordersService: OrdersService) { }
+  checkAdvancedType(): string {
+    for (let sug of this.optionsOfConcreteType) {
 
-  SaveDetailsForm(orderDetailsForm) {
-    let newForm = new OrderDetails(this.details.street, this.details.houseNumber, this.details.city,
-      this.details.date, this.details.time, this.details.castingType, this.details.quantity, this.details.isPlus,
-      this.details.isConcrete, this.details.concreteType, this.details.isAdvanced,
-      this.details.advancedType1, this.details.advancedType2, this.details.advancedType3, this.details.advancedType4, this.details.advancedType5,
-      this.details.isPump, this.details.pumpType, this.details.isRubberHose, this.details.hoseLength);
-      //בדיקה אם הצרוף קיים או לא
-    this.ordersService.saveOrder(newForm).subscribe(() => { });
-    orderDetailsForm.reset();
+      if (sug.SugBeton == this.advancedType1 && sug.Chozek == this.advancedType2 && sug.TzorechBeton == this.advancedType3 && sug.DargatChasifa == this.advancedType4 && sug.SomechBeton == this.advancedType5) {
+
+        return sug.KodParit;
+      }
+    }
+    this.details.pritimBetonKodParit="";
+    alert("לא קיים צרוף כזה בבטון מתקדם");
   }
 
+  SaveDetailsForm(orderDetailsForm) {
+
+    this.details.userAddress = this.street + " " + this.houseNumber + " " + this.city;
+    this.details.plus = String(this.isPlus);
+
+    if (this.isAdvanced) {
+      this.details.pritimBetonKodParit = this.checkAdvancedType();
+    }
+
+    if (this.isRubberHose && !this.details.hoseLength) {
+      alert("יש להזין אורך צינור");
+    }
+
+    let newForm = new OrderDetails(this.details.userAddress,
+      this.details.date, this.details.time,
+      this.details.sugYetzikaKodParit,
+      this.details.quantity, this.details.plus,
+      this.details.pritimBetonKodParit,
+      this.details.pritimMashevaKodParit, this.details.hoseLength);
+
+    this.detailsService.saveOrder(newForm).subscribe((d) => {
+      orderDetailsForm.reset();
+    });
+  }
+
+  constructor(private detailsService: OrdersService) { }
 
   ngOnInit() {
 
-    this.ordersService.getCastingType().subscribe((d) => {
+    this.detailsService.getCastingType().subscribe((d) => {
+
       this.optionsOfCastingType = d;
       this.optionsOfCastingType = this.optionsOfCastingType.recordset;
-      console.log(this.optionsOfCastingType);
     });
-    this.ordersService.getConcreteType().subscribe((d) => {
+    this.detailsService.getConcreteType().subscribe((d) => {
+
       this.optionsOfConcreteType = d;
       this.optionsOfConcreteType = this.optionsOfConcreteType.recordset;
     });
-    this.ordersService.getPumpType().subscribe((d) => {
+    this.detailsService.getPumpType().subscribe((d) => {
+
       this.optionsOfPumpType = d;
-      this.optionsOfPumpType =  this.optionsOfPumpType.recordset;
+      this.optionsOfPumpType = this.optionsOfPumpType.recordset;
     });
   }
-
 }
+

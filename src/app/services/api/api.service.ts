@@ -16,16 +16,12 @@ export class ApiService {
   createUser(newUser) {
     return this.http.post("http://localhost:3000/createUser", newUser);
   }
-
+  getUserNames() {
+    return this.http.get("http://localhost:3000/getUsersToCheckAgainstUserNamesInDb");
+  }
   validateUser() {
-
+    return this.http.get("http://localhost:3000/getUsersAndPassNamesToValidateExistingUserLogin");
   }
-
-
-  getOptionOfCasting() {
-    return this.http.get("http://localhost:3000/getOptionOfCasting")
-  }
-
 
   priceDetails() {
     let b = this.http.get("http://localhost:3000/priceDetails");

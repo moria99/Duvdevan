@@ -24,35 +24,38 @@
 
   <table *ngIf="total" align="center" border="solid 2px">
     <tr>
-      <td>{{total.sachLifney}}</td>
       <td>סה"כ ברוטו</td>
+      <td>{{total.sachLifney}}</td>
     </tr>
     <tr>
+      <td> הנחה % {{total.Hanacha}}</td>
       <td>{{total.Hanacha}}</td>
-      <td>{{total.Hanacha}} % הנחה</td>
     </tr>
     <tr>
       <td>סה"כ לפני מע"מ</td>
     </tr>
     <tr>
+      <td>מע"מ % {{total.Maham}} </td>
       <td>{{total.sachAcharey}}</td>
-      <td>{{total.Maham}} % מע"מ</td>
     </tr>
     <tr>
+      <td>סה"כ כולל מע"מ</td>
       <td>{{total.SachHakolKolel}}</td>
-      <td>"כ כולל מע"מ</td>
     </tr>
   </table>
 
 
-  <button class="" onclick="">
-    <h3>הבא </h3>
-  </button>
+ 
 
-  <button class="" onclick="">
-    <h3>הקודם </h3>
-  </button>
+    <a routerLink="/../log-in/{{r}}">
+      <button class="" onclick=""> הבא </button>
 
+    </a>
+  
+    <a routerLink="../order-details">
+      <button class="" onclick=""> הקודם </button>
+
+    </a>
 </body>
 
 </html>

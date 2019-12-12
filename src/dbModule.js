@@ -37,8 +37,8 @@ module.exports = {
 };
 
 async function getCastingType() {
-  let sugYetzika = await db.query("SELECT TOP (100) PERCENT SugYetzika FROM  dbo.AtblHovala WHERE (SugYetzika IS NOT NULL) ORDER BY SugYetzika");
-  //let sugYetzika = await db.query("SELECT TOP (100) PERCENT KodParit,TeurParit FROM  dbo.AtblSugYetzika WHERE (TeurParit IS NOT NULL) ORDER BY TeurParit");
+  //let sugYetzika = await db.query("SELECT TOP (100) PERCENT SugYetzika FROM  dbo.AtblHovala WHERE (SugYetzika IS NOT NULL) ORDER BY SugYetzika");
+  let sugYetzika = await db.query("SELECT TOP (100) PERCENT KodParit,TeurParit FROM  dbo.AtblSugYetzika WHERE (TeurParit IS NOT NULL) ORDER BY TeurParit");
   return sugYetzika;
 }
 
@@ -53,10 +53,13 @@ async function getPumpType() {
 }
 
 async function pushDetailsForm(f) {
-  let newForm = await db.query(`insert into dbo.AtblHovala (ShemLakoach,THovala,SHatchalatHovala,SugYetzika,KamutSchora,Plus,KodParitBeton,SugSchora,KamutNosefet) values (
-    "${f.street}+' '+${f.houseNumber}+' '+${f.city}","${f.date}","${f.time}",
-    "${f.sugYetzika.KodParit}","${f.quantity}","${f.isPlus}","${f.pritimBeton.KodParit}","${f.pritimMasheva.KodParit}",${f.hoseLength}")`);
-  return newForm;
+  let newForm = await db.query(`insert into dbo.AtblHovala (ShemLakoach,THovala,SHatchalatHovala,SugYetzika,
+    KamutSchora,Plus,KodParitBeton,SugSchora,KamutNosefet) values ('${f.userAddress}',
+    '${f.date}','${f.time}','${f.sugYetzikaKodParit}','${f.quantity}','${f.plus}',
+    '${f.pritimBetonKodParit}','${f.pritimMashevaKodParit}','${f.hoseLength}')`);
+  
+    let misHovala = await db.query("SELECT TOP 1 MisHovala FROM dbo.AtblHovala ORDER BY MisHovala DESC;");
+    return misHovala;
 }
 
 async function getOrderFromDb(id) {

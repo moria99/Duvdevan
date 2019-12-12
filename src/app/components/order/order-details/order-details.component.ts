@@ -19,6 +19,8 @@ export class OrderDetailsComponent implements OnInit {
   advancedType3;
   advancedType4;
   advancedType5;
+  defaultAdvancedConcrete = "xxx";// יש לשמור כאן סוג של בטון מתקדם בררת מחדל
+  defaultCodeOfAdvancedConcrete = "xxx";// הקוד שלו 
   isConcrete: boolean = false;
   isAdvanced: boolean = false;
   isPump: boolean = false;
@@ -33,33 +35,48 @@ export class OrderDetailsComponent implements OnInit {
         return sug.KodParit;
       }
     }
-    this.details.pritimBetonKodParit="";
     alert("לא קיים צרוף כזה בבטון מתקדם");
   }
 
   SaveDetailsForm(orderDetailsForm) {
+    let flag = true;
 
     this.details.userAddress = this.street + " " + this.houseNumber + " " + this.city;
     this.details.plus = String(this.isPlus);
 
     if (this.isAdvanced) {
       this.details.pritimBetonKodParit = this.checkAdvancedType();
+      if (!this.details.pritimBetonKodParit) {
+        let OK = confirm(this.defaultAdvancedConcrete + " בטון מתקדם בררת מחדל");
+        if (OK) {
+          this.details.pritimBetonKodParit = this.defaultCodeOfAdvancedConcrete;
+        } else {
+          flag = false;
+        }
+      }
     }
 
     if (this.isRubberHose && !this.details.hoseLength) {
       alert("יש להזין אורך צינור");
+      flag = false;
     }
 
     let newForm = new OrderDetails(this.details.userAddress,
       this.details.date, this.details.time,
       this.details.sugYetzikaKodParit,
-      this.details.quantity, this.details.plus,
+      this.details.quantity * 1.0, this.details.plus,
       this.details.pritimBetonKodParit,
-      this.details.pritimMashevaKodParit, this.details.hoseLength);
-
-    this.detailsService.saveOrder(newForm).subscribe((d) => {
-      orderDetailsForm.reset();
-    });
+      this.details.pritimMashevaKodParit, this.details.hoseLength * 1.0);
+    if (flag) {
+      this.detailsService.saveOrder(newForm).subscribe((d) => {
+        let mis;
+        mis=d;
+        mis=mis.recordset[0].MisHovala
+        console.log(mis);
+        location.href='price/'+mis;
+        //orderDetailsForm.reset();
+      });
+    }
   }
 
   constructor(private detailsService: OrdersService) { }

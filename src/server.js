@@ -72,7 +72,8 @@ app.get('/getPumpType', async function (req, res) {
 });
 
 app.post('/pushDetailsForm', async function (req, res) {
-  let result = await dbModule.pushDetailsForm(req.body);
   console.log(req.body);
+  let result = await dbModule.pushDetailsForm(req.body);
+  console.log(result);
   res.send(result);
 });

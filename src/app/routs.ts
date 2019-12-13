@@ -21,50 +21,22 @@ export const routesConfiguration: Routes = [
         path: 'log-in',
         component: LogInComponent,
         children: [
-
             {
-
-                path: 'log-in/:code',
+                path: ':misHovala',
                 component: LogInComponent,
-            },
-            {
-                path: 'order',
-                component: OrderComponent,
-                children: [
-                    {
-                        path: 'newOrder',
-                        component: OrderDetailsComponent,
-                    },
-                    {
-                        path: 'price-details',
-                        component: PriceDetailsComponent,
-                    },
-                    {
-                        path: 'order-details',
-                        component: PriceDetailsComponent,
-                    }
-                ]
             }
         ]
+    },
+    {
+        path: 'price/:misHovala',
+        component: PriceDetailsComponent,
+    },
+    {
+        path: 'payment/:misHovala',
+        component: PaymentComponent,
+    },
+    {
+        path: 'myOrders/:KolAvLakoch',
+        component: MyOrdersComponent,
     }
 ]
-      
-
-//                 path: ':id',
-//                 component: LogInComponent,
-//             }]
-//     },
-//     {
-//         path: 'price/:id',6
-//         component: PriceDetailsComponent,
-//     },
-//     {
-//         path: 'payment/:id',
-//         component: PaymentComponent,
-//     },
-//     {
-//         path: 'myOrders/:id',
-//         component: MyOrdersComponent,
-
-//     }
-// 

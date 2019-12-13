@@ -10,10 +10,7 @@ export class UsersService {
   constructor(private apiService: ApiService) { }
 
   createUser(newUser) {
-    this.apiService.createUser(newUser).subscribe((r) => {
-      let result = r;
-      return result;
-    });
+   return this.apiService.createUser(newUser);
   }
   checkUserName() {
     return this.apiService.getUserNames();

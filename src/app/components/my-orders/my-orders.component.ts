@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { OrderDetails } from '../../classes/OrderDetails';
 import { OrdersService } from '../../services/orders/orders.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -10,17 +11,21 @@ import { OrdersService } from '../../services/orders/orders.service';
 })
 export class MyOrdersComponent implements OnInit {
   orders;
-  @Input() id: number
-  constructor(private OrdersService: OrdersService) { }
+  id;
+  constructor(private OrdersService: OrdersService,public activeRoute:ActivatedRoute) { }
 
   ngOnInit() {
     console.log("kkkoo");
+
+    this.activeRoute.paramMap.subscribe(map => {
+      this.id = map.get('KolAvLakoch');
+      console.log(this.id);
+    })
 
     this.OrdersService.getFromData(this.id).subscribe((d) => {
       console.log("hhhh");
       this.orders = d;
       this.orders = this.orders.recordset;
-      //this.orders.THovala = this.orders.THovala;
       console.log(this.orders.THovala);
 
     })

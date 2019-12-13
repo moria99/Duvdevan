@@ -5,12 +5,12 @@ let db;
 let connectionPromise = mssql.connect({ //create conected to the data base
     //connectionLimit: 100,
     // host: "localhost",
-    user: "zaq",
+    user: "duvdevan",
     // server: "DESKTOP-2G2D206\\SQLEXPRESS",
     server: "localhost",
-    password: "zaq21wsx!",
+    password: "duvdevan1!",
     // "beitar",
-    database: "Duvdevan"
+    database: "DuvdevanDB"
     // "duvdevan"
     // "DuvdevanDB"
   })
@@ -63,9 +63,8 @@ async function pushDetailsForm(f) {
 }
 
 async function getOrderFromDb(id) {
-  console.log("dbModdule");
-  let d = db.query("select * from AtblHovala");
-  //  where KolAvLakoch=" + id
+  console.log("dbModdule "+id);
+  let d = db.query("select * from AtblHovala where KodAvLakoach='" + id+"'");
   let orders = await d;
   console.log(orders);
 

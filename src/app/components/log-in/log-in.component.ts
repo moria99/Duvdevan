@@ -44,10 +44,14 @@ export class LogInComponent implements OnInit {
       }
       this.newUser.clientCode = this.newUser.userName;
       if (this.allUserNamesFromDb) {
-        this.usersService.createUser(this.newUser);
+        console.log("aaa");
+        this.usersService.createUser(this.newUser).subscribe((r) => {console.log("in"+r);
+        });;
         console.log("after");
         alert("You are successfully registered and your Client Code is : " + this.newUser.clientCode);
-        location.href = "http://localhost:4200/order/newOrder";
+        //מה - urlפה צריך להביא את ההזמנה לפי מספר הזמנה שנשלף 
+        //ולעדכן ש KolAvLakoch שבהזמנה שווה לUserName 
+        location.href='/../myOrders/'+this.newUser.userName;
       }
     }
     else {
@@ -68,7 +72,9 @@ export class LogInComponent implements OnInit {
         if (this.userName === u.UserName) {
           if (this.password === u.PassName) {
             alert("You have successfully logged in.  Click '' to continue to see your account orders.  Have a wonderful day!");
-            location.href = "http://localhost:4200/order/newOrder";
+            //מה - urlפה צריך להביא את ההזמנה לפי מספר הזמנה שנשלף 
+            //ולעדכן ש KolAvLakoch שבהזמנה שווה לUserName 
+            location.href='/../myOrders/'+this.userName;
           }
           // else alert("The username and password do not match.  Please try again or uncheck the 'Registered User' box and SIGN IN as a new user.");
         }

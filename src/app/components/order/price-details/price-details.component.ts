@@ -16,7 +16,7 @@ export class PriceDetailsComponent implements OnInit {
 
   total;
   pricesArray;
-  r;
+  misHovala;
 
   ngOnInit() {
 
@@ -34,9 +34,9 @@ export class PriceDetailsComponent implements OnInit {
 
     });
 
-    // this.activeRoute.paramMap.subscribe(map => {
-    //   this.r = map.get('c');
-    //   console.log(this.r);
-    // })
+    this.activeRoute.paramMap.subscribe(map => {
+      this.misHovala = map.get('misHovala');
+      console.log(this.misHovala);
+    })
   }
 }

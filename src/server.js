@@ -17,10 +17,10 @@ app.listen(port, () => {
   console.log("I listen to port " + port);
 });
 
-app.get('/getOrders', async function (req, res) {
+app.post('/getOrders', async function (req, res) {
   console.log("server")
   let orders;
-  orders = await dbModule.getOrderFromDb(req.body);
+  orders = await dbModule.getOrderFromDb(req.body.id);
   res.send(orders);
 })
 
